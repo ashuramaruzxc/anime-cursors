@@ -1,0 +1,10 @@
+.DS_store
+.env
+test
+result
+hosts/result
+hosts/darwin/result
+/.pre-commit-config.yaml
+.pre-commit-config.yaml
+.direnv
+secrets/.env

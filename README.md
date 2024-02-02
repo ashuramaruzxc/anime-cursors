@@ -4,7 +4,7 @@
 
 This project utilizes media assets that are created by [夜夢（よるむ], who gave permission to modify and redistribute their work.
 
-Please note that if you plan to use or redistribute these assets, you must adhere to the terms of the license. See the [LICENSE](LICENSE) file for details.
+Please note that if you plan to use or redistribute these assets, you must adhere to the terms of the license. See the [LICENSE](COPYING.CC-BY-NC-SA.4.0.md) file for details.
 
 ### Credits
 
