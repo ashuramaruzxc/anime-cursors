@@ -1,0 +1,110 @@
+{
+    "alternate.ani": [
+        "bottom_left_corner",
+        "bottom_right_corner",
+        "bottom_side",
+        "down-arrow",
+        "left_side",
+        "left-arrow",
+        "right_side",
+        "right-arrow",
+        "top_left_corner",
+        "top_right_corner",
+        "top_side",
+        "up_arrow"
+    ],
+    "background.ani": [
+        "half-busy",
+        "left_ptr_watch",
+        "progress",
+        "pirate"
+    ],
+    "busy.ani": [
+        "wait",
+        "watch"
+    ],
+    "crosshair.ani": [
+        "cross",
+        "crosshair"
+    ],
+    "drag.ani": [
+        "all-scroll",
+        "closedhand",
+        "dnd-move",
+        "dnd-none",
+        "fleur",
+        "grabbing",
+        "move",
+        "size_all"
+    ],
+    "help.ani": [
+        "help",
+        "left_ptr_help",
+        "question_arrow",
+        "whats_this"
+    ],
+    "diagonal1.ani": [
+        "nw-resize",
+        "nwse-resize",
+        "se-resize",
+        "size_fdiag"
+    ],
+    "diagonal2.ani": [
+        "ne-resize",
+        "nesw-resize",
+        "size_bdiag",
+        "sw-resize"
+    ],
+    "horizontal.ani": [
+        "e-resize",
+        "ew-resize",
+        "h_double_arrow",
+        "sb_h_double_arrow",
+        "size_hor",
+        "w-resize"
+    ],
+    "vertical.ani": [
+        "n-resize",
+        "ns-resize",
+        "row-resize",
+        "s-resize",
+        "sb_v_double_arrow",
+        "size_ver",
+        "split_v",
+        "v_double_arrow"
+    ],
+    "idle.ani": [
+        "default",
+        "left_ptr",
+        "size-bdiag",
+        "size-fdiag",
+        "size-hor",
+        "size-ver",
+        "top_left_arrow"
+    ],
+    "handwriting.ani": [
+        "draft",
+        "pencil"
+    ],
+    "linked.ani": [
+        "grab",
+        "hand1",
+        "hand2",
+        "openhand",
+        "pointer",
+        "pointing_hand"
+    ],
+    "text.ani": [
+        "ibeam",
+        "text",
+        "xterm"
+    ],
+    "unavailable.ani":[
+        "circle",
+        "crossed_circle",
+        "dnd_no_drop",
+        "forbidden",
+        "no_drop",
+        "not_allowed"
+    ]
+}

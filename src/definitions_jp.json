@@ -1,0 +1,17 @@
+{
+    "代替選択": ["alternate"],
+    "バックグラウンド作業中": ["background"],
+    "待ち状態": ["busy"],
+    "領域選択": ["crosshair"],
+    "移動": ["drag"],
+    "ヘルプの選択": ["help"],
+    "斜めに拡大・縮小1": ["diagonal1"],
+    "斜めに拡大・縮小2": ["diagonal2"],
+    "左右に拡大・縮小": ["horizontal"],
+    "上下に拡大・縮小": ["vertical"],
+    "通常": ["idle"],
+    "手書き": ["handwriting"],
+    "リンク選択": ["linked"],
+    "テキスト選択": ["text"],
+    "利用不可": ["unavailable"]
+}
