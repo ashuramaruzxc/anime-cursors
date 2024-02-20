@@ -8,3 +8,8 @@ hosts/darwin/result
 .pre-commit-config.yaml
 .direnv
 secrets/.env
+.venv
+*.code-workspace
+test
+dummy-x11-cursors
+.vscode

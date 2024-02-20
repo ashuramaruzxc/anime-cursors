@@ -1,0 +1,47 @@
+{
+  "description": "List directories or files within a specified directory.",
+  "arguments": [
+      {
+          "name": "-d, --dir, --directory",
+          "type": "str",
+          "description": "Directory to list"
+      },
+      {
+          "name": "-r, --recursive",
+          "description": "Set to list directories recursively"
+      },
+      {
+          "name": "-v, --verbose",
+          "description": "Print verbose output"
+      },
+      {
+          "name": "--format",
+          "type": "str",
+          "description": "File format to filter by (ani or cur)"
+      },
+      {
+        "name": "-o, --output",
+        "type": "str",
+        "description": "Output directory"
+      },
+      {
+        "name": "--name",
+        "type": "str",
+        "description": "specifies the cursor theme name in index.theme"
+      },
+      {
+        "name": "--comment",
+        "type": "str",
+        "description": "specifies the index.theme description"
+      },
+      {
+          "name": "--version",
+          "description": "Show program's version number and exit"
+      },
+      {
+          "name": "-h, --help",
+          "description": "Show this help message and exit"
+      }
+  ],
+  "version": "0.0.1"
+}

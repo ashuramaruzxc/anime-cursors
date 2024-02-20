@@ -29,10 +29,12 @@
         formatter = pkgs.alejandra;
         devshells.default = {
           packages = with pkgs; [
+            xorg.xcursorgen
             alejandra
             bintools
             findutils
             nix-index
+            imagemagick
             (python3.withPackages (p:
               with p; [
                 win2xcur
