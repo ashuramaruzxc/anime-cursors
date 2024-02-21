@@ -18,29 +18,10 @@
           ${builtins.concatStringsSep "\n" (lib.filter (name: name != "default") (lib.attrNames self.nixosModules))}
         '');
       };
-
       imports = [
         inputs.pre-commit-hooks-nix.flakeModule
         inputs.devshell.flakeModule
         ./pkgs
       ];
-
-      perSystem = {pkgs, ...}: {
-        formatter = pkgs.alejandra;
-        devshells.default = {
-          packages = with pkgs; [
-            xorg.xcursorgen
-            alejandra
-            bintools
-            findutils
-            nix-index
-            imagemagick
-            (python3.withPackages (p:
-              with p; [
-                win2xcur
-              ]))
-          ];
-        };
-      };
     };
 }

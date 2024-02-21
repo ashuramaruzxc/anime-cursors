@@ -13,3 +13,8 @@ secrets/.env
 test
 dummy-x11-cursors
 .vscode
+__pycache__
+.idea
+dist
+cur.py
+.test

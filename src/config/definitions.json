@@ -1,0 +1,106 @@
+{
+    "alternate": [
+        "bottom_left_corner",
+        "bottom_right_corner",
+        "bottom_side",
+        "down-arrow",
+        "left_side",
+        "left-arrow",
+        "right_side",
+        "right-arrow",
+        "top_left_corner",
+        "top_right_corner",
+        "top_side",
+        "up_arrow"
+    ],
+    "background": [
+        "half-busy",
+        "left_ptr_watch",
+        "progress",
+        "pirate"
+    ],
+    "busy": [
+        "wait",
+        "watch"
+    ],
+    "crosshair": [
+        "cross",
+        "crosshair"
+    ],
+    "drag": [
+        "all-scroll",
+        "closedhand",
+        "dnd-move",
+        "dnd-none",
+        "fleur",
+        "grabbing",
+        "move",
+        "size_all"
+    ],
+    "help": [
+        "help",
+        "left_ptr_help",
+        "question_arrow",
+        "whats_this"
+    ],
+    "diagonal1": [
+        "nw-resize",
+        "nwse-resize",
+        "se-resize",
+        "size_fdiag"
+    ],
+    "diagonal2": [
+        "ne-resize",
+        "nesw-resize",
+        "size_bdiag",
+        "sw-resize"
+    ],
+    "horizontal": [
+        "e-resize",
+        "ew-resize",
+        "h_double_arrow",
+        "sb_h_double_arrow",
+        "size_hor",
+        "w-resize"
+    ],
+    "vertical": [
+        "n-resize",
+        "ns-resize",
+        "row-resize",
+        "s-resize",
+        "sb_v_double_arrow",
+        "size_ver",
+        "split_v",
+        "v_double_arrow"
+    ],
+    "idle": [
+        "default",
+        "left_ptr",
+        "top_left_arrow"
+    ],
+    "handwriting": [
+        "draft",
+        "pencil"
+    ],
+    "linked": [
+        "grab",
+        "hand1",
+        "hand2",
+        "openhand",
+        "pointer",
+        "pointing_hand"
+    ],
+    "text": [
+        "ibeam",
+        "text",
+        "xterm"
+    ],
+    "unavailable":[
+        "circle",
+        "crossed_circle",
+        "dnd_no_drop",
+        "forbidden",
+        "no_drop",
+        "not_allowed"
+    ]
+}
