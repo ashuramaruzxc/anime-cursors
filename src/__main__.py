@@ -6,23 +6,27 @@ import json
 import logging
 import os
 from io import BytesIO
+
+from multiprocessing.pool import Pool
 from pathlib import Path
 from string import Template
-from typing import List, Tuple, Dict
+from typing import Dict, List, Tuple
+
+import numpy as np
 from PIL import Image
 
-from multiprocessing.pool import ThreadPool
-
+from PIL.ImagePalette import ImagePalette
 from win2xcur.parser import open_blob
 from win2xcur.writer import to_x11
-from win2xcur.writer.x11 import transform
+
 
 vcs_path = Path(__file__).parents[1]
 root_path = os.path.dirname(__file__)
 
 
-def rename_files(files_to_rename: List[Path], destination: Path, rename_map: Dict[str, List[str]]) -> Tuple[
-    List[Tuple[str, str]], List[Tuple[str, str]], List[str]]:
+def rename_files(
+    files_to_rename: List[Path], destination: Path, rename_map: Dict[str, List[str]]
+) -> Tuple[List[Tuple[str, str]], List[Tuple[str, str]], List[str]]:
     old_path = []
     new_path = []
     unmatched_files = []
@@ -56,11 +60,16 @@ def rename_files(files_to_rename: List[Path], destination: Path, rename_map: Dic
     return old_path, new_path, unmatched_files
 
 
-def generate_standard_xcursors(output: Path, rename_map: dict[str, list[str]]) -> dict[str, list[str]]:
+def generate_standard_xcursors(
+    output: Path, rename_map: dict[str, list[str]]
+) -> dict[str, list[str]]:
     """Copy non standardized files to xcursors files with standardized names."""
     mapping = {}
     for key, value in rename_map.items():
-        new_path = [os.path.join(output, "cursors", os.path.basename(new_name)) for new_name in value]
+        new_path = [
+            os.path.join(output, "cursors", os.path.basename(new_name))
+            for new_name in value
+        ]
         mapping[key] = new_path
     return mapping
 
@@ -121,12 +130,9 @@ def process(arg: Tuple) -> None:
     if name == "idle":
         frame = cursors.frames[0]
         cursor = frame[0]
-        image = cursor.image
-        image = image.convert("RGBA")
-
-        alpha = transform(image)
-        alpha = alpha.resize((320, 320), Image.Resampling.NEAREST)
-        alpha.save(f"{output}/thumb.png", "PNG")
+        png = cursor.image
+        png = png.resize((320, 320), Image.Resampling.NEAREST)
+        png.save(f"{output}/thumb.png", "PNG")
 
 
 def main() -> None:
@@ -168,7 +174,7 @@ def main() -> None:
         required=False,
         metavar="json",
         default=f"{root_path}/config/definitions_jp.json",
-        help="Redefine default json file with mapping definitions of [ani, cur] to xcursors"
+        help="Redefine default json file with mapping definitions of [ani, cur] to xcursors",
     )
     parser.add_argument(
         "--format",
@@ -183,7 +189,7 @@ def main() -> None:
         required=False,
         metavar="name",
         default="Custom",
-        help="specifies the cursor theme name"
+        help="specifies the cursor theme name",
     )
     parser.add_argument(
         "--comment",
@@ -191,7 +197,7 @@ def main() -> None:
         required=False,
         metavar="comment",
         default="Custom",
-        help="specifies the cursor theme description"
+        help="specifies the cursor theme description",
     )
     parser.add_argument(
         "-v",
@@ -215,7 +221,9 @@ def main() -> None:
     rename_xmc = load_rename_map(Path(f"{root_path}/config/definitions.json"))
     files_to_rename = list_files(args.prefix, args.format, args.recursive)
 
-    japanese_name, english_name, unmatched_files = rename_files(files_to_rename, args.output, rename_map)
+    japanese_name, english_name, unmatched_files = rename_files(
+        files_to_rename, args.output, rename_map
+    )
     new = [x[0] for x in english_name]
 
     if args.name and args.output == args.output:
@@ -230,7 +238,9 @@ def main() -> None:
             ),
         }
         for file, string_template in template.items():
-            data = string_template.safe_substitute(theme_name=args.name, comment=args.comment)
+            data = string_template.safe_substitute(
+                theme_name=args.name, comment=args.comment
+            )
             fp: Path = args.output / file
             fp.write_text(data)
 
@@ -256,9 +266,16 @@ def main() -> None:
                 mapping = generate_standard_xcursors(args.output, rename_xmc)
                 files_to_process.append((stream, name))
 
-        arg = [((fp, name), args.output, mapping, [22, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96]) for fp, name in
-               files_to_process]
-        with ThreadPool(args.jobs) as pool:
+        arg = [
+            (
+                (fp, name),
+                args.output,
+                mapping,
+                [22, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96],
+            )
+            for fp, name in files_to_process
+        ]
+        with Pool(args.jobs) as pool:
             pool.map(process, arg)
 
 

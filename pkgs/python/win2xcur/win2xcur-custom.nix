@@ -15,8 +15,8 @@ with python3Packages;
     src = fetchFromGitHub rec {
       owner = "ashuramaruzxc";
       repo = "${pname}";
-      rev = "51633b9f14739e9be347e0afb3f1a7809b53e242";
-      sha256 = "sha256-Tok+9UPLjohr9Qh+Lc8zlx14uMJhF7dTj9XYhEcYkuI=";
+      rev = "2e64dc5f1952108025040d7cb54723aea142ba6d";
+      sha256 = "sha256-FbY41m/ZRILH0PNVS2/EAph+6MjaVUZSRkbvKeJFsOw=";
     };
     
     doCheck = false;
