@@ -5,7 +5,6 @@
   imagemagick,
   ffmpeg,
   zlib,
-
 }:
 with python3Packages;
   buildPythonPackage rec {
@@ -15,10 +14,10 @@ with python3Packages;
     src = fetchFromGitHub rec {
       owner = "ashuramaruzxc";
       repo = "${pname}";
-      rev = "2e64dc5f1952108025040d7cb54723aea142ba6d";
-      sha256 = "sha256-FbY41m/ZRILH0PNVS2/EAph+6MjaVUZSRkbvKeJFsOw=";
+      rev = "743ca3341ce2b08895bcd05eca503a6b4343c9b3";
+      sha256 = "sha256-QItkTWMtWtcHHiOjfTLwRCPtnwnrpa2XR1eREtP2tCQ=";
     };
-    
+
     doCheck = false;
 
     buildInputs = [ffmpeg imagemagick zlib];
