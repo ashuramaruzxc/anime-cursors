@@ -20,7 +20,7 @@
         allowBroken = true;
         packageOverrides = pkgs: {
           gimp-python = pkgs.gimp.override {withPython = true;};
-          win2xcur = config.packages.clickgen;
+          win2xcur = config.packages.cursorgen;
         };
         permittedInsecurePackages = [
           "python-2.7.18.7"

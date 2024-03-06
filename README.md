@@ -1,5 +1,38 @@
-# Animated Cute cursors on Linux
+# Anime Cursors
+Python library wrapper for [cursorgen](https://github.com/ashuramaruzxc/cursorgen) for building animated
+and static cursors primarily made by [[夜夢（よるむ)](https://www.pixiv.net/en/users/345405)]
 
+## Requirements
+* Python version 3.7.5 or higher
+* [cursorgen](https://github.com/ashuramaruzxc/cursorgen) >= 1.0.0
+
+## Installation
+### Python
+* Clone the repo
+* `pip install cursorgen -e https://github.com/ashuramaruzxc/cursorgen#egg=cursorgen`
+
+### NixOS/Nix
+* Clone the repo
+* Ensure that `nix >= 2.37` is installed
+* in`nix.conf` put `experimental-features = nix-command flakes`
+* `nix-env -iA nixpkgs.direnv`
+* `direnv allow`
+
+## Usage
+If you have animated or static (.ani | .cur) files you can simply run:
+
+    python -m CursorConverter --prefix /Path/To/Directory With Cursors
+It will create a directory `dist` with cursorname directory, thumbnail and simple index.theme file
+
+However if you want make a custom name and add comment:
+
+    python -m CursorConverter \
+    --prefix /Path/To/Directory With Cursors \
+    --name "Sample" \
+    --comment "Sample"
+You can also specify amount of jobs(something like make -j16...) in order to speed up converter a bit:
+    
+    python -m CursorConverter --prefix /Path/To/Directory With Cursors -j numberOfJobs
 ## Media Assets
 
 This project utilizes media assets that are created by [夜夢（よるむ)](https://www.pixiv.net/en/users/345405), who gave permission to modify and redistribute their work.
