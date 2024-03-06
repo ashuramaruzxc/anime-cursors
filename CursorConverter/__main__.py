@@ -16,8 +16,8 @@ import numpy as np
 from PIL import Image
 
 from PIL.ImagePalette import ImagePalette
-from win2xcur.parser import open_blob
-from win2xcur.writer import to_x11
+from cursorgen.parser import open_blob
+from cursorgen.writer import to_x11
 
 
 vcs_path = Path(__file__).parents[1]

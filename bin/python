@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-direnv reload
-exec $(which python) "$@"

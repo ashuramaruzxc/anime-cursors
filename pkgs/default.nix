@@ -20,7 +20,7 @@
         allowBroken = true;
         packageOverrides = pkgs: {
           gimp-python = pkgs.gimp.override {withPython = true;};
-          win2xcur = config.packages.win2xcur-custom;
+          win2xcur = config.packages.clickgen;
         };
         permittedInsecurePackages = [
           "python-2.7.18.7"
@@ -33,8 +33,8 @@
     };
     formatter = pkgs.alejandra;
     packages = with pkgs; {
-      win2xcur-git = callPackage ./python/win2xcur/win2xcur-git.nix {};
-      win2xcur-custom = callPackage ./python/win2xcur/win2xcur-custom.nix {};
+      win2xcur-git = callPackage ./python/win2xcur {};
+      cursorgen = callPackage ./python/cursorgen {};
       clickgen = callPackage ./python/clickgen {};
       xcursor-viewer = libsForQt5.callPackage ./utils/xcursor-viewer {};
     };

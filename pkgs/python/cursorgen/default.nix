@@ -8,14 +8,14 @@
 }:
 with python3Packages;
   buildPythonPackage rec {
-    pname = "win2xcur";
-    version = "0.1.2";
+    pname = "cursorgen";
+    version = "1.0.0";
 
     src = fetchFromGitHub rec {
       owner = "ashuramaruzxc";
       repo = "${pname}";
-      rev = "743ca3341ce2b08895bcd05eca503a6b4343c9b3";
-      sha256 = "sha256-QItkTWMtWtcHHiOjfTLwRCPtnwnrpa2XR1eREtP2tCQ=";
+      rev = "c095c30f5d322f4fdeb361fce9b22313b9bbf117";
+      sha256 = "sha256-1c+oi6R2YKwHmMikmb4l7slw28i4XXFMicD8odOuEB4=";
     };
 
     doCheck = false;
@@ -24,9 +24,9 @@ with python3Packages;
     propagatedBuildInputs = [setuptools pillow numpy];
 
     meta = with lib; {
-      description = "Tool that converts cursors from Windows format to Xcursor format";
-      homepage = "https://github.com/quantum5/win2xcur";
-      changelog = "https://github.com/quantum5/win2xcur/releases/tag/v${version}";
+      description = "Cursorgen is a fork of win2xcur that aims to preserve the image quality of the cursor ";
+      homepage = "https://github.com/ashuramaruzxc/cursorgen";
+      changelog = "https://github.com/ashuramaruzxc/cursorgen/releases/tag/v${version}";
       license = licenses.gpl3Plus;
       maintainers = with maintainers; [ashuramaruzxc];
     };

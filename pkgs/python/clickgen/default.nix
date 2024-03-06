@@ -4,7 +4,7 @@
   imagemagick,
 }:
 with python3Packages;
-  buildPythonApplication rec {
+  buildPythonPackage rec {
     pname = "clickgen";
     version = "2.2.0";
     format = "wheel";
