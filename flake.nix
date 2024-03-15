@@ -56,6 +56,7 @@
               black.enable = true;
               flake8.enable = true;
               isort.enable = true;
+              mypy.enable = true;
             };
             settings = {
               alejandra = {
@@ -82,14 +83,6 @@
               [
                 (python3.withPackages (p:
                   with p; [
-                    requests
-                    black
-                    pillow
-                    numpy
-                    pyyaml
-                    attrs
-                    wand
-                    toml
                     win2xcur
                   ]))
               ]
