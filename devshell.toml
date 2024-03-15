@@ -1,4 +1,4 @@
-imports = ["language.c"]
+imports = ["language.c", "git.hooks"]
 
 language.c.includes = ["zlib", "cyrus_sasl"]
 
@@ -23,10 +23,10 @@ packages = [
 ]
 packagesFrom = ["direnv"]
 
-[[env]]
-name = "PATH"
-prefix = "$DEVSHELL_DIR/bin"
+# [[env]]
+# name = "PATH"
+# prefix = "$DEVSHELL_DIR/bin"
 
-[[env]]
-name = "PYTHONPATH"
-prefix = "$DEVSHELL_DIR/lib"
+# [[env]]
+# name = "PYTHONPATH"
+# prefix = "$DEVSHELL_DIR/lib"

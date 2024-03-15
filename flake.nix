@@ -8,8 +8,14 @@
     devshell.url = "github:numtide/devshell";
   };
 
-  outputs = {self, ...} @ inputs:
+  outputs = {
+    self,
+    pre-commit-hooks-nix,
+    ...
+  } @ inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux" "aarch64-linux"];
+      imports = [inputs.flake-parts.flakeModules.easyOverlay];
       flake.nixosModules = let
         inherit (inputs.nixpkgs) lib;
       in {
@@ -18,10 +24,85 @@
           ${builtins.concatStringsSep "\n" (lib.filter (name: name != "default") (lib.attrNames self.nixosModules))}
         '');
       };
-      imports = [
-        inputs.pre-commit-hooks-nix.flakeModule
-        inputs.devshell.flakeModule
-        ./pkgs
-      ];
+      perSystem = {
+        config,
+        system,
+        pkgs,
+        ...
+      }: {
+        _module.args.pkgs = import inputs.nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            allowBroken = true;
+            packageOverrides = pkgs: {
+              gimp-python = pkgs.gimp.override {withPython = true;};
+              win2xcur = config.packages.cursorgen;
+            };
+            permittedInsecurePackages = [
+              "python-2.7.18.7"
+              "python-2.7.18.7-env"
+            ];
+          };
+          overlays = [
+            inputs.devshell.overlays.default
+          ];
+        };
+        checks = {
+          pre-commit-check = pre-commit-hooks-nix.lib.${system}.run {
+            src = ./.;
+            hooks = {
+              alejandra.enable = true; # enable pre-commit formatter
+              black.enable = true;
+              flake8.enable = true;
+              isort.enable = true;
+            };
+            settings = {
+              alejandra = {
+                package = config.formatter;
+                check = true;
+                threads = 4;
+              };
+              isort = {
+                profile = "black";
+              };
+            };
+          };
+        };
+        devShells.default = let
+          inherit (config.checks.pre-commit-check) shellHook;
+        in
+          pkgs.devshell.mkShell {
+            imports = [(pkgs.devshell.importTOML ./devshell.toml)];
+            git.hooks = {
+              enable = true;
+              pre-commit.text = shellHook;
+            };
+            packages = with pkgs;
+              [
+                (python3.withPackages (p:
+                  with p; [
+                    requests
+                    black
+                    pillow
+                    numpy
+                    pyyaml
+                    attrs
+                    wand
+                    toml
+                    win2xcur
+                  ]))
+              ]
+              ++ (with config.packages; [xcursor-viewer]);
+          };
+        formatter = pkgs.alejandra;
+
+        packages = with pkgs; {
+          win2xcur-git = callPackage ./pkgs/python/win2xcur {};
+          cursorgen = callPackage ./pkgs/python/cursorgen {};
+          clickgen = callPackage ./pkgs/python/clickgen {};
+          xcursor-viewer = libsForQt5.callPackage ./pkgs/utils/xcursor-viewer {};
+        };
+      };
     };
 }

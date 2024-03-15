@@ -6,19 +6,14 @@ import json
 import logging
 import os
 from io import BytesIO
-
 from multiprocessing.pool import Pool
 from pathlib import Path
 from string import Template
-from typing import Dict, List, Tuple
+from typing import Any, Dict, List, Tuple
 
-import numpy as np
-from PIL import Image
-
-from PIL.ImagePalette import ImagePalette
 from cursorgen.parser import open_blob
 from cursorgen.writer import to_x11
-
+from PIL import Image
 
 vcs_path = Path(__file__).parents[1]
 root_path = os.path.dirname(__file__)
@@ -74,15 +69,15 @@ def generate_standard_xcursors(
     return mapping
 
 
-def list_files(directory: Path, file_format: str, recursive: bool = False) -> list:
+def list_files(directory: Path, file_format: str, recursive: bool = False) -> list:  # type: ignore
     matched_files = []
     file_format = f".{file_format}" if not file_format.startswith(".") else file_format
 
     if recursive:
-        for root, _, files in os.walk(directory):
-            for file in files:
-                if file.endswith(file_format):
-                    matched_files.append(Path(root) / file)
+        for root, _, filenames in os.walk(directory):
+            for filename in filenames:
+                if filename.endswith(file_format):
+                    matched_files.append(Path(root) / filename)
     else:
         for file in directory.iterdir():
             if file.is_file() and file.name.endswith(file_format):
@@ -91,7 +86,7 @@ def list_files(directory: Path, file_format: str, recursive: bool = False) -> li
     return matched_files
 
 
-def load_rename_map(json_file: Path) -> dict:
+def load_rename_map(json_file: Path) -> Any:
     try:
         with open(json_file, "r", encoding="utf-8") as file:
             rename_map = json.load(file)
@@ -104,19 +99,15 @@ def load_rename_map(json_file: Path) -> dict:
         exit(1)
 
 
-def load_help_menu(json_file: Path = f"{root_path}/config/menu.json") -> dict:
-    try:
-        with open(json_file, "r", encoding="utf-8") as file:
-            help_menu = json.load(file)
-        return help_menu
-    except FileNotFoundError:
-        print(f"'{json_file}' not found.")
+def load_help_menu(json_file: str = f"{root_path}/config/menu.json") -> Any:
+    with open(json_file, "r", encoding="utf-8") as file:
+        help_menu = json.load(file)
+    return help_menu
 
 
-def process(arg: Tuple) -> None:
-    file, output, mapping, sizes = arg
-    stream_value, name = file
-    blob = stream_value.getvalue()
+def process(arg: Tuple[BytesIO, str, Path, Dict[str, List[str]], List[int]]) -> None:
+    stream, name, output, mapping, sizes = arg
+    blob = stream.getvalue()
 
     cursors = open_blob(blob)
     result = to_x11(frames=cursors.frames, sizes=sizes)
@@ -237,11 +228,11 @@ def main() -> None:
                 '[Icon Theme]\nName="$theme_name Cursors"\nComment="$comment"\n'
             ),
         }
-        for file, string_template in template.items():
+        for file_name, string_template in template.items():
             data = string_template.safe_substitute(
                 theme_name=args.name, comment=args.comment
             )
-            fp: Path = args.output / file
+            fp: Path = args.output / file_name
             fp.write_text(data)
 
     if not files_to_rename:
@@ -250,30 +241,31 @@ def main() -> None:
 
     if unmatched_files:
         print("Unmatched files: " + ", ".join(unmatched_files))
-        with open("unmatched.json", "w", encoding="utf-8") as stream:
-            json.dump(sorted(unmatched_files), stream, ensure_ascii=False, indent=1)
+        with open("unmatched.json", "w", encoding="utf-8") as file:
+            json.dump(sorted(unmatched_files), file, ensure_ascii=False, indent=1)
         return
     if len(new) < 15:
-        print(f"Error: check definitions_jp if files match renaming scheme")
+        print("Error: check definitions_jp if files match renaming scheme")
 
     else:
         files_to_process = []
-        for old, new in zip(japanese_name, english_name):
-            with open(old[1], "rb") as file:
+        for old_name, new_name in zip(japanese_name, english_name):
+            with open(old_name[1], "rb") as file:
                 stream = BytesIO(file.read())
 
-                name = os.path.splitext(os.path.basename(new[1]))[0]
+                name: str = os.path.splitext(os.path.basename(new_name[1]))[0]
                 mapping = generate_standard_xcursors(args.output, rename_xmc)
                 files_to_process.append((stream, name))
 
         arg = [
             (
-                (fp, name),
+                stream,
+                name,
                 args.output,
                 mapping,
                 [22, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96],
             )
-            for fp, name in files_to_process
+            for stream, name in files_to_process
         ]
         with Pool(args.jobs) as pool:
             pool.map(process, arg)
