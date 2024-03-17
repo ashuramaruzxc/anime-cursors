@@ -172,5 +172,3 @@ cython_debug/
 # Project outputs
 result/
 unmatched.json
-/.pre-commit-config.yaml
-.pre-commit-config.yaml

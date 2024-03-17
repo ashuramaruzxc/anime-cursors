@@ -31,15 +31,19 @@ classifiers = [
 dependencies = ["cursorgen", "pillow"]
 
 [project.urls]
-"Homepage" = "https://github.com/ashuramaruzxc/cursorgen"
-"Bug Reports" = "https://github.com/ashuramaruzxc/cursorgen/issues"
-"Source" = "https://github.com/ashuramaruzxc/cursorgen"
+"Homepage" = "https://github.com/ashuramaruzxc/anime-cursors"
+"Bug Reports" = "https://github.com/ashuramaruzxc/anime-cursors/issues"
+"Source" = "https://github.com/ashuramaruzxc/anime-cursors"
+
 [project.scripts]
-cursorgen = "cursorgen.__main__:main"
+CursorConverter = "CursorConverter.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["CursorConverter"]
 
 [tool.flake8]
 max-line-length = 120
-application-import-names = "cursorgen"
+application-import-names = "anime-cursors"
 import-order-style = "pycharm"
 extend-ignore = "E203"
 
