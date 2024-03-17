@@ -48,46 +48,17 @@
             inputs.devshell.overlays.default
           ];
         };
-        checks = {
-          pre-commit-check = pre-commit-hooks-nix.lib.${system}.run {
-            src = ./.;
-            hooks = {
-              alejandra.enable = true; # enable pre-commit formatter
-              black.enable = true;
-              flake8.enable = true;
-              isort.enable = true;
-              mypy.enable = true;
-            };
-            settings = {
-              alejandra = {
-                package = config.formatter;
-                check = true;
-                threads = 4;
-              };
-              isort = {
-                profile = "black";
-              };
-            };
-          };
+        devShells.default = pkgs.devshell.mkShell {
+          imports = [(pkgs.devshell.importTOML ./devshell.toml)];
+          packages = with pkgs;
+            [
+              (python3.withPackages (p:
+                with p; [
+                  win2xcur
+                ]))
+            ]
+            ++ (with config.packages; [xcursor-viewer]);
         };
-        devShells.default = let
-          inherit (config.checks.pre-commit-check) shellHook;
-        in
-          pkgs.devshell.mkShell {
-            imports = [(pkgs.devshell.importTOML ./devshell.toml)];
-            git.hooks = {
-              enable = true;
-              pre-commit.text = shellHook;
-            };
-            packages = with pkgs;
-              [
-                (python3.withPackages (p:
-                  with p; [
-                    win2xcur
-                  ]))
-              ]
-              ++ (with config.packages; [xcursor-viewer]);
-          };
         formatter = pkgs.alejandra;
 
         packages = with pkgs; {

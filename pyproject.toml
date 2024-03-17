@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "anime-cursors"
+version = "1.0.0"
+description = "Animeted Cursors on Linux "
+readme = "README.md"
+requires-python = ">=3.7"
+license = { file = "LICENSE.md" }
+keywords = ["cur", "ani", "x11", "windows", "win32", "cursor", "xcursor"]
+authors = [{ name = "ashuramaruzxc", email = "ashuramaru@tenjin-dk.com" }]
+maintainers = [{ name = "ashuramaruzxc", email = "ashuramaru@tenjin-dk.com" }]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Win32 (MS Windows)",
+  "Environment :: X11 Applications",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Desktop Environment",
+]
+dependencies = ["cursorgen", "pillow"]
+
+[project.urls]
+"Homepage" = "https://github.com/ashuramaruzxc/cursorgen"
+"Bug Reports" = "https://github.com/ashuramaruzxc/cursorgen/issues"
+"Source" = "https://github.com/ashuramaruzxc/cursorgen"
+[project.scripts]
+cursorgen = "cursorgen.__main__:main"
+
+[tool.flake8]
+max-line-length = 120
+application-import-names = "cursorgen"
+import-order-style = "pycharm"
+extend-ignore = "E203"
+
+[tool.mypy]
+ignore_missing_imports = true
+strict = true
+plugins = ["numpy.typing.mypy_plugin"]
+
+[tool.black]
+line-length = 120
+target-version = ["py38", "py39", "py310", "py311"]
+
+[tool.isort]
+profile = "black"

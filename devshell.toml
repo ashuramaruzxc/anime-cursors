@@ -1,4 +1,4 @@
-imports = ["language.c", "git.hooks"]
+imports = ["language.c"]
 
 language.c.includes = ["zlib", "cyrus_sasl"]
 

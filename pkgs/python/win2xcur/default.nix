@@ -14,7 +14,7 @@ with python3Packages;
       dist = python;
       python = "py3";
     };
-    
+
     doCheck = false;
 
     buildInputs = [imagemagick];

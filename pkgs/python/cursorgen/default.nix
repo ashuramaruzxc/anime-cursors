@@ -5,11 +5,11 @@
 with python3Packages;
   buildPythonPackage rec {
     pname = "cursorgen";
-    version = "0.1.2";
+    version = "0.1.3";
     format = "wheel";
     src = fetchPypi rec {
       inherit pname version format;
-      sha256 = "sha256-/jrhgApJTRKuMCE33Q7SGGy4oXPARzWJSXFJWKO3N5o=";
+      sha256 = "sha256-6loB+6U0grHjIcPLaHewQD7L9wGGDilPpHMtnpH+Sgc=";
       dist = python;
       python = "py3";
     };

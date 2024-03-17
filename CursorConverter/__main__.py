@@ -55,16 +55,11 @@ def rename_files(
     return old_path, new_path, unmatched_files
 
 
-def generate_standard_xcursors(
-    output: Path, rename_map: dict[str, list[str]]
-) -> dict[str, list[str]]:
+def generate_standard_xcursors(output: Path, rename_map: dict[str, list[str]]) -> dict[str, list[str]]:
     """Copy non standardized files to xcursors files with standardized names."""
     mapping = {}
     for key, value in rename_map.items():
-        new_path = [
-            os.path.join(output, "cursors", os.path.basename(new_name))
-            for new_name in value
-        ]
+        new_path = [os.path.join(output, "cursors", os.path.basename(new_name)) for new_name in value]
         mapping[key] = new_path
     return mapping
 
@@ -212,9 +207,7 @@ def main() -> None:
     rename_xmc = load_rename_map(Path(f"{root_path}/config/definitions.json"))
     files_to_rename = list_files(args.prefix, args.format, args.recursive)
 
-    japanese_name, english_name, unmatched_files = rename_files(
-        files_to_rename, args.output, rename_map
-    )
+    japanese_name, english_name, unmatched_files = rename_files(files_to_rename, args.output, rename_map)
     new = [x[0] for x in english_name]
 
     if args.name and args.output == args.output:
@@ -224,14 +217,10 @@ def main() -> None:
 
     if args.comment and args.name:
         template: Dict[str, Template] = {
-            "index.theme": Template(
-                '[Icon Theme]\nName="$theme_name Cursors"\nComment="$comment"\n'
-            ),
+            "index.theme": Template('[Icon Theme]\nName="$theme_name Cursors"\nComment="$comment"\n'),
         }
         for file_name, string_template in template.items():
-            data = string_template.safe_substitute(
-                theme_name=args.name, comment=args.comment
-            )
+            data = string_template.safe_substitute(theme_name=args.name, comment=args.comment)
             fp: Path = args.output / file_name
             fp.write_text(data)
 
