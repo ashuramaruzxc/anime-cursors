@@ -252,7 +252,7 @@ def main() -> None:
                 name,
                 args.output,
                 mapping,
-                [22, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96],
+                [12, 18, 24, 30, 36, 42, 48, 64],
             )
             for stream, name in files_to_process
         ]
