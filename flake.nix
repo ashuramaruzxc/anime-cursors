@@ -1,61 +1,36 @@
 {
   description = "Animeted Cursors on Linux";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    pre-commit-hooks-nix.url = "github:cachix/pre-commit-hooks.nix";
-    devenv.url = "github:cachix/devenv";
-    nixpkgs-python.url = "github:cachix/nixpkgs-python";
-    nixpkgs-python.inputs.nixpkgs.follows = "nixpkgs";
-  };
-
   outputs =
-    { self, pre-commit-hooks-nix, ... }@inputs:
+    inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ inputs.devenv.flakeModule ];
       systems = [
         "x86_64-linux"
         "aarch64-linux"
       ];
-      imports = [
-        inputs.flake-parts.flakeModules.easyOverlay
-        inputs.devenv.flakeModule
-      ];
-      flake.nixosModules =
-        let
-          inherit (inputs.nixpkgs) lib;
-        in
-        {
-          default = throw (
-            lib.mdDoc ''
-              default is deprecated
-              ${builtins.concatStringsSep "\n" (
-                lib.filter (name: name != "default") (lib.attrNames self.nixosModules)
-              )}
-            ''
-          );
-        };
+
       perSystem =
+        { pkgs, system, ... }:
         {
-          config,
-          system,
-          pkgs,
-          ...
-        }:
-        {
-          _module.args.pkgs = import inputs.nixpkgs {
-            inherit system;
-            config = {
-              allowUnfree = true;
-              packageOverrides = pkgs: {
-                gimp-python = pkgs.gimp.override { withPython = true; };
-                win2xcur = config.packages.cursorgen;
+          _module.args.pkgs = inputs.nixpkgs.legacyPackages.${system};
+          checks = {
+            pre-commit-check =
+              let
+                excludes = [
+                  ".direnv"
+                  ".devenv"
+                ];
+              in
+              inputs.pre-commit-hooks.lib.${system}.run {
+                src = ./.;
+                hooks.shellcheck.enable = true;
+                hooks.nixfmt-rfc-style = {
+                  enable = true;
+                  packages = pkgs.nixfmt-rfc-style;
+                  inherit excludes;
+                };
               };
-              permittedInsecurePackages = [
-                "python-2.7.18.7"
-                "python-2.7.18.7-env"
-              ];
-            };
           };
           devenv.shells.default = {
             name = "anime-cursors env";
@@ -65,40 +40,68 @@
               python = {
                 enable = true;
                 venv = {
-                    enable = true;
-                    requirements = ''
-                        cursorgen
-                        pillow
-                        numpy
-                        black
-                        isort
-                        mypy
-                        flake8
-                    '';
+                  enable = true;
+                  requirements = ''
+                    cursorgen
+                    pillow
+                    numpy
+                    black
+                    isort
+                    mypy
+                    flake8
+                  '';
                 };
-                version = "3.11.2";
+                version = "3.12.8";
               };
             };
-            packages = [
-              pkgs.ffmpeg
-              pkgs.imagemagick
-              pkgs.zlib
-              pkgs.git
-              pkgs.pre-commit
-              pkgs.nix-index
-              pkgs.nix-prefetch-github
-              pkgs.nix-prefetch-scripts
-              config.packages.xcursor-viewer
-            ];
+            pre-commit =
+              let
+                excludes = [
+                  ".direnv"
+                  ".devenv"
+                ];
+              in
+              {
+                hooks.nixfmt-rfc-style = {
+                  enable = true;
+                  inherit excludes;
+                  package = pkgs.nixfmt-rfc-style;
+                };
+                hooks.shellcheck.enable = true;
+              };
+            packages = builtins.attrValues {
+              inherit (pkgs) zlib;
+              inherit (pkgs) git pre-commit;
+              inherit (pkgs) nix-index nix-prefetch-github nix-prefetch-scripts;
+              inherit (pkgs) ffmpeg-full imagemagick;
+              xcursor-viewer = pkgs.libsForQt5.callPackage ./pkgs/xcursor-viewer.nix { };
+              cursorgen = pkgs.callPackage ./pkgs/cursorrgen.nix { };
+            };
           };
           formatter = pkgs.nixfmt-rfc-style;
-
-          packages = with pkgs; {
-            win2xcur-git = callPackage ./pkgs/python/win2xcur { };
-            cursorgen = callPackage ./pkgs/python/cursorgen { };
-            clickgen = callPackage ./pkgs/python/clickgen { };
-            xcursor-viewer = libsForQt5.callPackage ./pkgs/utils/xcursor-viewer { };
+          packages = {
+            # debug packages outputs
+            cursorgen = pkgs.callPackage ./pkgs/cursorrgen.nix { };
+            xcursor-viewer = pkgs.libsForQt5.callPackage ./pkgs/xcursor-viewer.nix { };
           };
         };
     };
+
+  inputs = {
+    # Flake-Parts and Devenv
+    # --------------------------------------------------
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    devenv.url = "github:cachix/devenv";
+    devenv.inputs.nixpkgs.follows = "nixpkgs";
+    nix2container.url = "github:nlewo/nix2container";
+    nix2container.inputs.nixpkgs.follows = "nixpkgs";
+    mk-shell-bin.url = "github:rrbutani/nix-mk-shell-bin";
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+    pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
+    pre-commit-hooks.inputs.flake-compat.follows = "";
+    nixpkgs-python.url = "github:cachix/nixpkgs-python";
+    nixpkgs-python.inputs.nixpkgs.follows = "nixpkgs";
+    # --------------------------------------------------
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  };
 }
