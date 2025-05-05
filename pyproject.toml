@@ -29,7 +29,7 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Topic :: Desktop Environment",
 ]
-dependencies = ["cursorgen", "pillow"]
+dependencies = ["cursorgen", "pillow", "tqdm"]
 
 [project.urls]
 "Homepage" = "https://github.com/ashuramaruzxc/anime-cursors"

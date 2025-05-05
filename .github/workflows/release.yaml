@@ -32,7 +32,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -e .
+          pip install pillow cursorgen
 
       - name: Process Touhou Cursors
         run: |

@@ -49,7 +49,6 @@
                     mypy
                     numpy
                     pillow
-                    py7zr
                     pylint
                     tqdm
                   '';
