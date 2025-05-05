@@ -173,3 +173,9 @@ cython_debug/
 # Project outputs
 result/
 unmatched.json
+./output.json
+./output*.json
+tree
+tree.txt
+directory_structure.txt
+pre-commit-config.yaml

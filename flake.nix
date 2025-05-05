@@ -42,16 +42,17 @@
                 venv = {
                   enable = true;
                   requirements = ''
-                    cursorgen
-                    pillow
-                    numpy
                     black
+                    cursorgen
+                    flake8
                     isort
                     mypy
-                    flake8
+                    numpy
+                    pillow
+                    pylint
                   '';
                 };
-                version = "3.12.8";
+                version = "3.12.9";
               };
             };
             pre-commit =
@@ -70,7 +71,7 @@
                 hooks.shellcheck.enable = true;
               };
             packages = builtins.attrValues {
-              inherit (pkgs) zlib;
+              inherit (pkgs) zlib pylint;
               inherit (pkgs) git pre-commit;
               inherit (pkgs) nix-index nix-prefetch-github nix-prefetch-scripts;
               inherit (pkgs) ffmpeg-full imagemagick;
