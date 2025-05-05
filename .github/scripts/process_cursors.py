@@ -10,7 +10,7 @@ import zipfile
 from pathlib import Path
 
 # Get the repository root path
-repo_root = Path(__file__).resolve().parents[2]
+repo_root = Path(__file__).resolve().parents[1]
 cursor_converter_dir = repo_root / "CursorConverter"
 
 
@@ -42,11 +42,11 @@ def process_touhou_cursors() -> None:
                 character_en = char_data["en_name"]
                 character_name = char_data["short_character_name"]
                 print(f"  Converting {character_jp} ({character_en})...")
-                
+
                 temp_dir = temp_base / character_name
-                
+
                 os.makedirs(temp_dir, exist_ok=True)
-                
+
                 input_dir = repo_root / char_data["path"] / character_jp
                 cmd = [
                     sys.executable,
@@ -65,7 +65,7 @@ def process_touhou_cursors() -> None:
                 ]
                 print(f"  Running command: {' '.join(cmd)}")
                 subprocess.run(cmd, check=True)
-                
+
                 zip_path = dist_dir / f"{character_name}.zip"
                 print(f"  Creating zip file: {zip_path}")
 
@@ -86,7 +86,7 @@ def process_touhou_cursors() -> None:
                 import traceback
 
                 traceback.print_exc()
-                
+
     shutil.rmtree(temp_base, ignore_errors=True)
 
     print("All Touhou cursor sets processed successfully!")
