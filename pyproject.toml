@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "anime-cursors"
 version = "1.0.0"
-description = "Animeted Cursors on Linux "
+description = "Animeted Cursors on Linux"
 readme = "README.md"
 requires-python = ">=3.7"
 license = { file = "LICENSE.md" }

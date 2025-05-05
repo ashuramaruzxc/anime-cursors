@@ -49,7 +49,9 @@
                     mypy
                     numpy
                     pillow
+                    py7zr
                     pylint
+                    tqdm
                   '';
                 };
                 version = "3.12.9";

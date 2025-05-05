@@ -252,7 +252,9 @@ def main() -> None:
                 name,
                 args.output,
                 mapping,
-                [12, 18, 24, 30, 36, 42, 48, 64],
+                # Make compatible with every possible DE
+                # maybe except hyprland because of new cursor protocol
+                [12, 18, 24, 30, 32, 36, 42, 48, 64],
             )
             for stream, name in files_to_process
         ]
