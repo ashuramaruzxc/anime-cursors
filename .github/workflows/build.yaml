@@ -32,7 +32,7 @@ jobs:
           python .github/scripts/process_cursors.py
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: touhou-cursors-${{ github.run_number }}
           name: Touhou Cursors Release ${{ github.run_number }}
