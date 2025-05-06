@@ -13,7 +13,12 @@
       perSystem =
         { pkgs, system, ... }:
         {
-          _module.args.pkgs = inputs.nixpkgs.legacyPackages.${system};
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            config = {
+              allowUnfree = true;
+            };
+          };
           checks = {
             pre-commit-check =
               let
@@ -77,16 +82,23 @@
               inherit (pkgs) nix-index nix-prefetch-github nix-prefetch-scripts;
               inherit (pkgs) ffmpeg-full imagemagick;
               xcursor-viewer = pkgs.libsForQt5.callPackage ./pkgs/xcursor-viewer.nix { };
-              cursorgen = pkgs.callPackage ./pkgs/cursorrgen.nix { };
+              cursorgen = pkgs.callPackage ./pkgs/cursorgen.nix { };
             };
           };
           formatter = pkgs.nixfmt-rfc-style;
-          packages = {
-            # debug packages outputs
-            cursorgen = pkgs.callPackage ./pkgs/cursorrgen.nix { };
-            xcursor-viewer = pkgs.libsForQt5.callPackage ./pkgs/xcursor-viewer.nix { };
-            # cursors = pkgs.callPackage ./pkgs/cursors.nix { };
-          };
+          packages =
+            let
+              cursorgenPkg = pkgs.callPackage ./pkgs/cursorgen.nix { };
+              xcursorViewerPkg = pkgs.libsForQt5.callPackage ./pkgs/xcursor-viewer.nix { };
+            in
+            {
+              # debug packages outputs
+              cursorgen = cursorgenPkg;
+              xcursor-viewer = xcursorViewerPkg;
+              cursors = pkgs.callPackage ./pkgs/cursors.nix {
+                cursorgen = cursorgenPkg;
+              };
+            };
         };
     };
 
