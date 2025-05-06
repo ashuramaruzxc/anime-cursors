@@ -58,6 +58,7 @@ Please note that if you plan to use or redistribute these assets, you must adher
 
 ## HUGE TODO:
 - Tag every cursor properly
+- Overall amount of xcursor files supposed to be 76 so have to fix somehow `definitions_jp.json`
 - Restructure directories since we don't need static cursors here
 - Consider using devenv scripts for building cursors
 - Add set of packages similar to `pkgs.catppuccin-cursors`
