@@ -51,13 +51,13 @@ let
 in
 stdenvNoCC.mkDerivation rec {
   pname = "anime-cursors";
-  version = "7";
+  version = "8";
 
   src = fetchFromGitHub {
     owner = "ashuramaruzxc";
     repo = "anime-cursors";
-    rev = "master";
-    hash = "sha256-KN/GPz79FthyDfZoGGdPYjNyiQMGMxVxC4UzQRdNP44=";
+    rev = "v${version}";
+    hash = "sha256-7XWQ7ADF3Zk34xDuP9OrUVB4bup0VPFQ9Wv9xUmOvCI=";
   };
 
   nativeBuildInputs = [
