@@ -56,7 +56,7 @@ jobs:
           tag_name: v${{ github.run_number }}
           name: Touhou Cursors Release v${{ github.run_number }}
           body: |
-            Release of Touhou cursor sets (1-20)
+            Release of Touhou cursor sets (1-31)
 
             This release includes processed cursor sets for all characters from:
             - 東方マウスカーソル　1～10 (Touhou Mouse Cursors 1-10)
