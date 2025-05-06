@@ -41,7 +41,6 @@ let
     "yuugi"
     "yuuka"
   ];
-
   pythonEnv = python3.withPackages (
     ps: with ps; [
       pillow
@@ -52,23 +51,21 @@ in
 stdenvNoCC.mkDerivation rec {
   pname = "anime-cursors";
   version = "8";
-
   src = fetchFromGitHub {
     owner = "ashuramaruzxc";
     repo = "anime-cursors";
     rev = "v${version}";
     hash = "sha256-7XWQ7ADF3Zk34xDuP9OrUVB4bup0VPFQ9Wv9xUmOvCI=";
   };
-
   nativeBuildInputs = [
     pythonEnv
     cursorgen
     unzip
   ];
 
-  outputs = variants ++ [ "out" ];
-
-  outputsToInstall = [ ];
+  # Remove the multiple outputs and outputsToInstall
+  # outputs = variants ++ [ "out" ];
+  # outputsToInstall = [ ];
 
   buildPhase = ''
     runHook preBuild
@@ -82,42 +79,33 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    for output in $(getAllOutputNames); do
-      if [ "$output" != "out" ]; then
-        local outputDir="''${!output}"
-        local iconsDir="$outputDir/share/icons"
-        
-        mkdir -p "$iconsDir"
-        
-        local displayName
-        case "$output" in
-          keine_hakutaku)
-            displayName="Keine_Hakutaku"
-            ;;
-          yukari_pcb)
-            displayName="Yukari PCB"
-            ;;
-          yukari_swr)
-            displayName="Yukari SWR"
-            ;;
-          *)
-            # Capitalize first letter
-            displayName="''${output^}"
-            ;;
-        esac
-        
-        if [ -f "dist/$displayName.zip" ]; then
-          unzip "dist/$displayName.zip" -d "$iconsDir"
-        else
-          echo "Warning: dist/$displayName.zip not found"
-        fi
+    mkdir -p $out/share/icons
+
+    for variant in ${toString variants}; do
+      local displayName
+      case "$variant" in
+        keine_hakutaku)
+          displayName="Keine_Hakutaku"
+          ;;
+        yukari_pcb)
+          displayName="Yukari PCB"
+          ;;
+        yukari_swr)
+          displayName="Yukari SWR"
+          ;;
+        *)
+          # Capitalize first letter
+          displayName="''${variant^}"
+          ;;
+      esac
+      
+      if [ -f "dist/$displayName.zip" ]; then
+        mkdir -p "$out/share/icons/touhou-$variant"
+        unzip "dist/$displayName.zip" -d "$out/share/icons/touhou-$variant"
+      else
+        echo "Warning: dist/$displayName.zip not found"
       fi
     done
-
-    mkdir -p "$out/share/icons"
-    if [ -f "dist/Remilia.zip" ]; then
-      unzip "dist/Remilia.zip" -d "$out/share/icons"
-    fi
 
     runHook postInstall
   '';
