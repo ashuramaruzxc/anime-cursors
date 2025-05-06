@@ -40,8 +40,8 @@ def process_touhou_cursors() -> None:
     touhou_sets = {
         "東方マウスカーソル　1～10": cursor_data.get("東方マウスカーソル　1～10", {}),
         "東方マウスカーソル　11～20": cursor_data.get("東方マウスカーソル　11～20", {}),
+        "東方マウスカーソル　20～31": cursor_data.get("東方マウスカーソル　20～31", {}),
     }
-
     # Determine optimal number of jobs
     num_jobs: int = multiprocessing.cpu_count()
 
@@ -61,9 +61,8 @@ def process_touhou_cursors() -> None:
         for character_jp, char_data in characters.items():
             try:
                 # Extract character information
-                character_en: str = char_data["en_name"]
-                character_name: str = char_data["short_character_name"]
-
+                character_en = char_data["en_name"]
+                character_name = char_data["short_character_name"]
                 print(f"\n{'=' * 40}")
                 print(f"Processing cursor: {character_jp} ({character_en})")
                 print(f"{'=' * 40}")

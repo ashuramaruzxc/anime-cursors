@@ -55,3 +55,9 @@ Please note that if you plan to use or redistribute these assets, you must adher
 ## Contact
 
 * [ashuramaru@tenjin-dk.com](mailto:ashuramaru@tenjin-dk.com)
+
+## HUGE TODO:
+- Tag every cursor properly
+- Restructure directories since we don't need static cursors here
+- Consider using devenv scripts for building cursors
+- Add set of packages similar to `pkgs.catppuccin-cursors`

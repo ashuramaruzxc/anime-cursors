@@ -53,7 +53,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.ANIME_RELEASE_TOKEN }}
         with:
-          tag_name: touhou-cursors-v${{ github.run_number }}
+          tag_name: v${{ github.run_number }}
           name: Touhou Cursors Release v${{ github.run_number }}
           body: |
             Release of Touhou cursor sets (1-20)
@@ -61,6 +61,7 @@ jobs:
             This release includes processed cursor sets for all characters from:
             - 東方マウスカーソル　1～10 (Touhou Mouse Cursors 1-10)
             - 東方マウスカーソル　11～20 (Touhou Mouse Cursors 11-20)
+            - 東方マウスカーソル　21～31 (Touhou Mouse Cursors 21-31)
 
             **Changelog:**
             - Updated cursor processing logic

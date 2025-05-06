@@ -85,6 +85,7 @@
             # debug packages outputs
             cursorgen = pkgs.callPackage ./pkgs/cursorrgen.nix { };
             xcursor-viewer = pkgs.libsForQt5.callPackage ./pkgs/xcursor-viewer.nix { };
+            # cursors = pkgs.callPackage ./pkgs/cursors.nix { };
           };
         };
     };

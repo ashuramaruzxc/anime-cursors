@@ -225,7 +225,7 @@
   },
   "ひなびた♪ マウスカーソル": {
     "和泉一舞": {
-      "path": "CursorConverter/Assets/win/ひなびた♪ マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/ひなびた♪ マウスカーソル",
       "name": "和泉一舞",
       "en_name": "Izumi Kazumai",
       "character_name": "和泉一舞",
@@ -233,7 +233,7 @@
       "short_character_name": "Kazumai"
     },
     "山形まり花": {
-      "path": "CursorConverter/Assets/win/ひなびた♪ マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/ひなびた♪ マウスカーソル",
       "name": "山形まり花",
       "en_name": "Yamagata Marika",
       "character_name": "山形まり花",
@@ -241,7 +241,7 @@
       "short_character_name": "Marika"
     },
     "春日咲子": {
-      "path": "CursorConverter/Assets/win/ひなびた♪ マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/ひなびた♪ マウスカーソル",
       "name": "春日咲子",
       "en_name": "Kasuga Sakiko",
       "character_name": "春日咲子",
@@ -249,7 +249,7 @@
       "short_character_name": "Sakiko"
     },
     "東雲夏陽": {
-      "path": "CursorConverter/Assets/win/ひなびた♪ マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/ひなびた♪ マウスカーソル",
       "name": "東雲夏陽",
       "en_name": "Shinonome Natsuhi",
       "character_name": "東雲夏陽",
@@ -257,7 +257,7 @@
       "short_character_name": "Natsuhi"
     },
     "東雲心菜": {
-      "path": "CursorConverter/Assets/win/ひなびた♪ マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/ひなびた♪ マウスカーソル",
       "name": "東雲心菜",
       "en_name": "Shinonome Kokona",
       "character_name": "東雲心菜",
@@ -265,7 +265,7 @@
       "short_character_name": "Kokona"
     },
     "芽兎めう": {
-      "path": "CursorConverter/Assets/win/ひなびた♪ マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/ひなびた♪ マウスカーソル",
       "name": "芽兎めう",
       "en_name": "Meto Meu",
       "character_name": "芽兎めう",
@@ -273,7 +273,7 @@
       "short_character_name": "Meu"
     },
     "霜月凛": {
-      "path": "CursorConverter/Assets/win/ひなびた♪ マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/ひなびた♪ マウスカーソル",
       "name": "霜月凛",
       "en_name": "Shimotsuki Rin",
       "character_name": "霜月凛",
@@ -281,27 +281,9 @@
       "short_character_name": "Rin"
     }
   },
-  "ゆかり": {
-    "妖々夢　Ver": {
-      "path": "CursorConverter/Assets/win/ゆかり/アニメーション",
-      "name": "妖々夢　Ver",
-      "en_name": "Perfect Cherry Blossom Ver",
-      "character_name": "八雲紫",
-      "en_character_name": "Yakumo Yukari",
-      "short_character_name": "Yukari PCB"
-    },
-    "緋想天　Ver": {
-      "path": "CursorConverter/Assets/win/ゆかり/アニメーション",
-      "name": "緋想天　Ver",
-      "en_name": "Scarlet Weather Rhapsody Ver",
-      "character_name": "八雲紫",
-      "en_character_name": "Yakumo Yukari",
-      "short_character_name": "Yukari SWR"
-    }
-  },
   "アイドルマスター": {
     "三浦あずさ": {
-      "path": "CursorConverter/Assets/win/アイドルマスター/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスター",
       "name": "三浦あずさ",
       "en_name": "Miura Azusa",
       "character_name": "三浦あずさ",
@@ -309,7 +291,7 @@
       "short_character_name": "Azusa"
     },
     "双海亜美": {
-      "path": "CursorConverter/Assets/win/アイドルマスター/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスター",
       "name": "双海亜美",
       "en_name": "Futami Ami",
       "character_name": "双海亜美",
@@ -317,7 +299,7 @@
       "short_character_name": "Ami"
     },
     "双海真美": {
-      "path": "CursorConverter/Assets/win/アイドルマスター/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスター",
       "name": "双海真美",
       "en_name": "Futami Mami",
       "character_name": "双海真美",
@@ -325,7 +307,7 @@
       "short_character_name": "Mami"
     },
     "四条貴音": {
-      "path": "CursorConverter/Assets/win/アイドルマスター/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスター",
       "name": "四条貴音",
       "en_name": "Shijo Takane",
       "character_name": "四条貴音",
@@ -333,7 +315,7 @@
       "short_character_name": "Takane"
     },
     "天海春香": {
-      "path": "CursorConverter/Assets/win/アイドルマスター/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスター",
       "name": "天海春香",
       "en_name": "Amami Haruka",
       "character_name": "天海春香",
@@ -341,7 +323,7 @@
       "short_character_name": "Haruka"
     },
     "如月千早": {
-      "path": "CursorConverter/Assets/win/アイドルマスター/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスター",
       "name": "如月千早",
       "en_name": "Kisaragi Chihaya",
       "character_name": "如月千早",
@@ -349,7 +331,7 @@
       "short_character_name": "Chihaya"
     },
     "我那覇響": {
-      "path": "CursorConverter/Assets/win/アイドルマスター/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスター",
       "name": "我那覇響",
       "en_name": "Ganaha Hibiki",
       "character_name": "我那覇響",
@@ -357,7 +339,7 @@
       "short_character_name": "Hibiki"
     },
     "星井美希": {
-      "path": "CursorConverter/Assets/win/アイドルマスター/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスター",
       "name": "星井美希",
       "en_name": "Hoshii Miki",
       "character_name": "星井美希",
@@ -365,7 +347,7 @@
       "short_character_name": "Miki"
     },
     "水瀬伊織": {
-      "path": "CursorConverter/Assets/win/アイドルマスター/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスター",
       "name": "水瀬伊織",
       "en_name": "Minase Iori",
       "character_name": "水瀬伊織",
@@ -373,7 +355,7 @@
       "short_character_name": "Iori"
     },
     "秋月律子": {
-      "path": "CursorConverter/Assets/win/アイドルマスター/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスター",
       "name": "秋月律子",
       "en_name": "Akizuki Ritsuko",
       "character_name": "秋月律子",
@@ -381,7 +363,7 @@
       "short_character_name": "Ritsuko"
     },
     "菊地真": {
-      "path": "CursorConverter/Assets/win/アイドルマスター/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスター",
       "name": "菊地真",
       "en_name": "Kikuchi Makoto",
       "character_name": "菊地真",
@@ -389,7 +371,7 @@
       "short_character_name": "Makoto"
     },
     "萩原雪歩": {
-      "path": "CursorConverter/Assets/win/アイドルマスター/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスター",
       "name": "萩原雪歩",
       "en_name": "Hagiwara Yukiho",
       "character_name": "萩原雪歩",
@@ -397,7 +379,7 @@
       "short_character_name": "Yukiho"
     },
     "音無小鳥": {
-      "path": "CursorConverter/Assets/win/アイドルマスター/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスター",
       "name": "音無小鳥",
       "en_name": "Otonashi Kotori",
       "character_name": "音無小鳥",
@@ -405,7 +387,7 @@
       "short_character_name": "Kotori"
     },
     "高槻やよい": {
-      "path": "CursorConverter/Assets/win/アイドルマスター/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスター",
       "name": "高槻やよい",
       "en_name": "Takatsuki Yayoi",
       "character_name": "高槻やよい",
@@ -415,7 +397,7 @@
   },
   "アイドルマスターU149　マウスカーソル": {
     "佐城雪美": {
-      "path": "CursorConverter/Assets/win/アイドルマスターU149　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスターU149　マウスカーソル",
       "name": "佐城雪美",
       "en_name": "Sasaki Yukimi",
       "character_name": "佐城雪美",
@@ -423,7 +405,7 @@
       "short_character_name": "Yukimi"
     },
     "市原仁奈": {
-      "path": "CursorConverter/Assets/win/アイドルマスターU149　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスターU149　マウスカーソル",
       "name": "市原仁奈",
       "en_name": "Ichihara Nina",
       "character_name": "市原仁奈",
@@ -431,7 +413,7 @@
       "short_character_name": "Nina"
     },
     "橘ありす": {
-      "path": "CursorConverter/Assets/win/アイドルマスターU149　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスターU149　マウスカーソル",
       "name": "橘ありす",
       "en_name": "Tachibana Arisu",
       "character_name": "橘ありす",
@@ -439,7 +421,7 @@
       "short_character_name": "Arisu"
     },
     "櫻井桃華": {
-      "path": "CursorConverter/Assets/win/アイドルマスターU149　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスターU149　マウスカーソル",
       "name": "櫻井桃華",
       "en_name": "Sakurai Momoka",
       "character_name": "櫻井桃華",
@@ -447,7 +429,7 @@
       "short_character_name": "Momoka"
     },
     "結城晴": {
-      "path": "CursorConverter/Assets/win/アイドルマスターU149　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスターU149　マウスカーソル",
       "name": "結城晴",
       "en_name": "Yuuki Haru",
       "character_name": "結城晴",
@@ -455,7 +437,7 @@
       "short_character_name": "Haru"
     },
     "赤城みりあ": {
-      "path": "CursorConverter/Assets/win/アイドルマスターU149　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスターU149　マウスカーソル",
       "name": "赤城みりあ",
       "en_name": "Akagi Miria",
       "character_name": "赤城みりあ",
@@ -463,7 +445,7 @@
       "short_character_name": "Miria"
     },
     "遊佐こずえ": {
-      "path": "CursorConverter/Assets/win/アイドルマスターU149　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/アイドルマスターU149　マウスカーソル",
       "name": "遊佐こずえ",
       "en_name": "Yusa Kozue",
       "character_name": "遊佐こずえ",
@@ -473,7 +455,7 @@
   },
   "エヴァンゲリヲン": {
     "アラエル": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "アラエル",
       "en_name": "Arael",
       "character_name": "アラエル",
@@ -481,7 +463,7 @@
       "short_character_name": "Arael"
     },
     "ゼルエル": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "ゼルエル",
       "en_name": "Zeruel",
       "character_name": "ゼルエル",
@@ -489,7 +471,7 @@
       "short_character_name": "Zeruel"
     },
     "レリエル": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "レリエル",
       "en_name": "Leliel",
       "character_name": "レリエル",
@@ -497,7 +479,7 @@
       "short_character_name": "Leliel"
     },
     "仮設５号機": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "仮設５号機",
       "en_name": "Provisional Unit-05",
       "character_name": "仮設５号機",
@@ -505,7 +487,7 @@
       "short_character_name": "Unit-05"
     },
     "六号機": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "六号機",
       "en_name": "Unit-06",
       "character_name": "六号機",
@@ -513,7 +495,7 @@
       "short_character_name": "Unit-06"
     },
     "冬月コウゾウ": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "冬月コウゾウ",
       "en_name": "Fuyutsuki Kozo",
       "character_name": "冬月コウゾウ",
@@ -521,7 +503,7 @@
       "short_character_name": "Fuyutsuki"
     },
     "初号機": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "初号機",
       "en_name": "Unit-01",
       "character_name": "初号機",
@@ -529,7 +511,7 @@
       "short_character_name": "Unit-01"
     },
     "初号機 覚醒": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "初号機 覚醒",
       "en_name": "Unit-01 Berserk",
       "character_name": "初号機 覚醒",
@@ -537,7 +519,7 @@
       "short_character_name": "Unit-01 Berserk"
     },
     "加持リョウジ": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "加持リョウジ",
       "en_name": "Kaji Ryoji",
       "character_name": "加持リョウジ",
@@ -545,7 +527,7 @@
       "short_character_name": "Kaji"
     },
     "四号機": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "四号機",
       "en_name": "Unit-04",
       "character_name": "四号機",
@@ -553,7 +535,7 @@
       "short_character_name": "Unit-04"
     },
     "式波・アスカ・ラングレー": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "式波・アスカ・ラングレー",
       "en_name": "Asuka Langley Soryu",
       "character_name": "式波・アスカ・ラングレー",
@@ -561,7 +543,7 @@
       "short_character_name": "Asuka"
     },
     "弐号機": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "弐号機",
       "en_name": "Unit-02",
       "character_name": "弐号機",
@@ -569,7 +551,7 @@
       "short_character_name": "Unit-02"
     },
     "弐号機　ビーストモード": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "弐号機　ビーストモード",
       "en_name": "Unit-02 Beast Mode",
       "character_name": "弐号機　ビーストモード",
@@ -577,7 +559,7 @@
       "short_character_name": "Unit-02 Beast"
     },
     "渚カヲル": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "渚カヲル",
       "en_name": "Nagisa Kaworu",
       "character_name": "渚カヲル",
@@ -585,7 +567,7 @@
       "short_character_name": "Kaworu"
     },
     "碇ゲンドウ": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "碇ゲンドウ",
       "en_name": "Ikari Gendo",
       "character_name": "碇ゲンドウ",
@@ -593,7 +575,7 @@
       "short_character_name": "Gendo"
     },
     "碇シンジ": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "碇シンジ",
       "en_name": "Ikari Shinji",
       "character_name": "碇シンジ",
@@ -601,7 +583,7 @@
       "short_character_name": "Shinji"
     },
     "碇ユイ": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "碇ユイ",
       "en_name": "Ikari Yui",
       "character_name": "碇ユイ",
@@ -609,7 +591,7 @@
       "short_character_name": "Yui"
     },
     "第10使徒": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "第10使徒",
       "en_name": "10th Angel",
       "character_name": "第10使徒",
@@ -617,7 +599,7 @@
       "short_character_name": "10th Angel"
     },
     "第3使徒": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "第3使徒",
       "en_name": "3rd Angel",
       "character_name": "第3使徒",
@@ -625,7 +607,7 @@
       "short_character_name": "3rd Angel"
     },
     "第4使徒": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "第4使徒",
       "en_name": "4th Angel",
       "character_name": "第4使徒",
@@ -633,7 +615,7 @@
       "short_character_name": "4th Angel"
     },
     "第5使徒": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "第5使徒",
       "en_name": "5th Angel",
       "character_name": "第5使徒",
@@ -641,7 +623,7 @@
       "short_character_name": "5th Angel"
     },
     "第6使徒": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "第6使徒",
       "en_name": "6th Angel",
       "character_name": "第6使徒",
@@ -649,7 +631,7 @@
       "short_character_name": "6th Angel"
     },
     "第8使徒": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "第8使徒",
       "en_name": "8th Angel",
       "character_name": "第8使徒",
@@ -657,7 +639,7 @@
       "short_character_name": "8th Angel"
     },
     "第９使徒": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "第９使徒",
       "en_name": "9th Angel",
       "character_name": "第９使徒",
@@ -665,7 +647,7 @@
       "short_character_name": "9th Angel"
     },
     "綾波レイ": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "綾波レイ",
       "en_name": "Ayanami Rei",
       "character_name": "綾波レイ",
@@ -673,7 +655,7 @@
       "short_character_name": "Rei"
     },
     "葛城ミサト": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "葛城ミサト",
       "en_name": "Katsuragi Misato",
       "character_name": "葛城ミサト",
@@ -681,7 +663,7 @@
       "short_character_name": "Misato"
     },
     "赤木リツコ": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "赤木リツコ",
       "en_name": "Akagi Ritsuko",
       "character_name": "赤木リツコ",
@@ -689,7 +671,7 @@
       "short_character_name": "Ritsuko"
     },
     "零号機": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "零号機",
       "en_name": "Unit-00",
       "character_name": "零号機",
@@ -697,7 +679,7 @@
       "short_character_name": "Unit-00"
     },
     "零号機　プロトタイプ": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン",
       "name": "零号機　プロトタイプ",
       "en_name": "Unit-00 Prototype",
       "character_name": "零号機　プロトタイプ",
@@ -705,7 +687,7 @@
       "short_character_name": "Unit-00 Proto"
     },
     "仮設５号機Ver": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション/真希波・マリ・イラストリアス",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/真希波・マリ・イラストリアス",
       "name": "仮設５号機Ver",
       "en_name": "Provisional Unit-05 Ver",
       "character_name": "真希波・マリ・イラストリアス",
@@ -713,7 +695,7 @@
       "short_character_name": "Mari Unit-05"
     },
     "弐号機Ver": {
-      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/アニメーション/真希波・マリ・イラストリアス",
+      "path": "CursorConverter/Assets/win/エヴァンゲリヲン/真希波・マリ・イラストリアス",
       "name": "弐号機Ver",
       "en_name": "Unit-02 Ver",
       "character_name": "真希波・マリ・イラストリアス",
@@ -723,7 +705,7 @@
   },
   "オーバーロード　マウスカーソル": {
     "アインズ・ウール・ゴウン": {
-      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル",
       "name": "アインズ・ウール・ゴウン",
       "en_name": "Ainz Ooal Gown",
       "character_name": "アインズ・ウール・ゴウン",
@@ -731,7 +713,7 @@
       "short_character_name": "Ainz"
     },
     "アウラ・ベラ・フィオーラ": {
-      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル",
       "name": "アウラ・ベラ・フィオーラ",
       "en_name": "Aura Bella Fiora",
       "character_name": "アウラ・ベラ・フィオーラ",
@@ -739,7 +721,7 @@
       "short_character_name": "Aura"
     },
     "アルベド": {
-      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル",
       "name": "アルベド",
       "en_name": "Albedo",
       "character_name": "アルベド",
@@ -747,7 +729,7 @@
       "short_character_name": "Albedo"
     },
     "エントマ・ヴァシリッサ・ゼータ": {
-      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル",
       "name": "エントマ・ヴァシリッサ・ゼータ",
       "en_name": "Entoma Vasilissa Zeta",
       "character_name": "エントマ・ヴァシリッサ・ゼータ",
@@ -755,7 +737,7 @@
       "short_character_name": "Entoma"
     },
     "コキュートス": {
-      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル",
       "name": "コキュートス",
       "en_name": "Cocytus",
       "character_name": "コキュートス",
@@ -763,7 +745,7 @@
       "short_character_name": "Cocytus"
     },
     "シズ・デルタ": {
-      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル",
       "name": "シズ・デルタ",
       "en_name": "CZ2128 Delta",
       "character_name": "シズ・デルタ",
@@ -771,7 +753,7 @@
       "short_character_name": "Shizu"
     },
     "シャルティア・ブラッドフォールン": {
-      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル",
       "name": "シャルティア・ブラッドフォールン",
       "en_name": "Shalltear Bloodfallen",
       "character_name": "シャルティア・ブラッドフォールン",
@@ -779,7 +761,7 @@
       "short_character_name": "Shalltear"
     },
     "セバス・チャン": {
-      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル",
       "name": "セバス・チャン",
       "en_name": "Sebas Tian",
       "character_name": "セバス・チャン",
@@ -787,7 +769,7 @@
       "short_character_name": "Sebas"
     },
     "ソリュシャン・イプシロン": {
-      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル",
       "name": "ソリュシャン・イプシロン",
       "en_name": "Solution Epsilon",
       "character_name": "ソリュシャン・イプシロン",
@@ -795,7 +777,7 @@
       "short_character_name": "Solution"
     },
     "デミウルゴス": {
-      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル",
       "name": "デミウルゴス",
       "en_name": "Demiurge",
       "character_name": "デミウルゴス",
@@ -803,7 +785,7 @@
       "short_character_name": "Demiurge"
     },
     "ナーベラル・ガンマ": {
-      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル",
       "name": "ナーベラル・ガンマ",
       "en_name": "Narberal Gamma",
       "character_name": "ナーベラル・ガンマ",
@@ -811,7 +793,7 @@
       "short_character_name": "Narberal"
     },
     "マーレ・ベロ・フィオーレ": {
-      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル",
       "name": "マーレ・ベロ・フィオーレ",
       "en_name": "Mare Bello Fiore",
       "character_name": "マーレ・ベロ・フィオーレ",
@@ -819,7 +801,7 @@
       "short_character_name": "Mare"
     },
     "ユリ・アルファ": {
-      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル",
       "name": "ユリ・アルファ",
       "en_name": "Yuri Alpha",
       "character_name": "ユリ・アルファ",
@@ -827,7 +809,7 @@
       "short_character_name": "Yuri"
     },
     "ルプスレギナ・ベータ": {
-      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/オーバーロード　マウスカーソル",
       "name": "ルプスレギナ・ベータ",
       "en_name": "Lupusregina Beta",
       "character_name": "ルプスレギナ・ベータ",
@@ -837,7 +819,7 @@
   },
   "シャドウバース": {
     "クィーン・ヴァンパイア": {
-      "path": "CursorConverter/Assets/win/シャドウバース/アニメーション",
+      "path": "CursorConverter/Assets/win/シャドウバース",
       "name": "クィーン・ヴァンパイア",
       "en_name": "Queen Vampire",
       "character_name": "クィーン・ヴァンパイア",
@@ -845,7 +827,7 @@
       "short_character_name": "Queen Vampire"
     },
     "ツバキ": {
-      "path": "CursorConverter/Assets/win/シャドウバース/アニメーション",
+      "path": "CursorConverter/Assets/win/シャドウバース",
       "name": "ツバキ",
       "en_name": "Tsubaki",
       "character_name": "ツバキ",
@@ -853,7 +835,7 @@
       "short_character_name": "Tsubaki"
     },
     "ドロシー": {
-      "path": "CursorConverter/Assets/win/シャドウバース/アニメーション",
+      "path": "CursorConverter/Assets/win/シャドウバース",
       "name": "ドロシー",
       "en_name": "Dorothy",
       "character_name": "ドロシー",
@@ -861,7 +843,7 @@
       "short_character_name": "Dorothy"
     },
     "ネフティス": {
-      "path": "CursorConverter/Assets/win/シャドウバース/アニメーション",
+      "path": "CursorConverter/Assets/win/シャドウバース",
       "name": "ネフティス",
       "en_name": "Nephthys",
       "character_name": "ネフティス",
@@ -869,7 +851,7 @@
       "short_character_name": "Nephthys"
     },
     "マステマ": {
-      "path": "CursorConverter/Assets/win/シャドウバース/アニメーション",
+      "path": "CursorConverter/Assets/win/シャドウバース",
       "name": "マステマ",
       "en_name": "Mastema",
       "character_name": "マステマ",
@@ -877,7 +859,7 @@
       "short_character_name": "Mastema"
     },
     "ルナ": {
-      "path": "CursorConverter/Assets/win/シャドウバース/アニメーション",
+      "path": "CursorConverter/Assets/win/シャドウバース",
       "name": "ルナ",
       "en_name": "Luna",
       "character_name": "ルナ",
@@ -885,7 +867,7 @@
       "short_character_name": "Luna"
     },
     "ヴァンピィ": {
-      "path": "CursorConverter/Assets/win/シャドウバース/アニメーション",
+      "path": "CursorConverter/Assets/win/シャドウバース",
       "name": "ヴァンピィ",
       "en_name": "Vampy",
       "character_name": "ヴァンピィ",
@@ -895,7 +877,7 @@
   },
   "シルヴィ": {
     "01": {
-      "path": "CursorConverter/Assets/win/シルヴィ/アニメーション",
+      "path": "CursorConverter/Assets/win/シルヴィ",
       "name": "01",
       "en_name": "Sylvie 01",
       "character_name": "シルヴィ",
@@ -903,7 +885,7 @@
       "short_character_name": "Sylvie 1"
     },
     "02": {
-      "path": "CursorConverter/Assets/win/シルヴィ/アニメーション",
+      "path": "CursorConverter/Assets/win/シルヴィ",
       "name": "02",
       "en_name": "Sylvie 02",
       "character_name": "シルヴィ",
@@ -911,7 +893,7 @@
       "short_character_name": "Sylvie 2"
     },
     "03": {
-      "path": "CursorConverter/Assets/win/シルヴィ/アニメーション",
+      "path": "CursorConverter/Assets/win/シルヴィ",
       "name": "03",
       "en_name": "Sylvie 03",
       "character_name": "シルヴィ",
@@ -919,30 +901,12 @@
       "short_character_name": "Sylvie 3"
     },
     "04": {
-      "path": "CursorConverter/Assets/win/シルヴィ/アニメーション",
+      "path": "CursorConverter/Assets/win/シルヴィ",
       "name": "04",
       "en_name": "Sylvie 04",
       "character_name": "シルヴィ",
       "en_character_name": "Sylvie",
       "short_character_name": "Sylvie 4"
-    }
-  },
-  "上白沢慧音　マウスカーソル": {
-    "アニメーション　慧音": {
-      "path": "CursorConverter/Assets/win/上白沢慧音　マウスカーソル/アニメーション",
-      "name": "アニメーション　慧音",
-      "en_name": "Animation Keine",
-      "character_name": "上白沢慧音",
-      "en_character_name": "Kamishirasawa Keine",
-      "short_character_name": "Keine"
-    },
-    "アニメーション　慧音（ハクタク Ver）": {
-      "path": "CursorConverter/Assets/win/上白沢慧音　マウスカーソル/アニメーション",
-      "name": "アニメーション　慧音（ハクタク Ver）",
-      "en_name": "Animation Keine (Hakutaku Ver)",
-      "character_name": "上白沢慧音（ハクタク Ver）",
-      "en_character_name": "Kamishirasawa Keine (Hakutaku Ver)",
-      "short_character_name": "Keine Hakutaku"
     }
   },
   "中二病でも恋がしたい！": {
@@ -1037,6 +1001,104 @@
       "character_name": "多軌透",
       "en_character_name": "Tanuma Kaname",
       "short_character_name": "Kaname"
+    }
+  },
+  "先代巫女": {
+    "path": "CursorConverter/Assets/win/先代巫女",
+      "name": "先代巫女",
+      "en_name": "For now idk",
+      "character_name": "先代巫女",
+      "en_character_name": "??? ",
+      "short_character_name": "???"
+  },
+  "東方マウスカーソル　20～31": {
+    "パチュリー": {
+    "path":"CursorConverter/Assets/win/東方マウスカーソル　20～31",
+    "name": "パチュリー",
+    "en_name": "Patchouli Knowledge",
+    "character_name": "パチュリー",
+    "en_name_character_name": "Patchouli Knowledge",
+    "short_character_name": "Patchouli"
+  },
+    "ゆかり（緋想天　Ver）": {
+      "path": "CursorConverter/Assets/win/東方マウスカーソル　20～31",
+      "name": "ゆかり（緋想天　Ver）",
+      "en_name": "Yukari Perfect Cherry Blossom Ver",
+      "character_name": "八雲紫",
+      "en_character_name": "Yakumo Yukari",
+      "short_character_name": "Yukari PCB"
+    },
+    "ゆかり（妖々夢 　Ver）": {
+      "path": "CursorConverter/Assets/win/東方マウスカーソル　20～31",
+      "name": "ゆかり（緋想天　Ver）",
+      "en_name": "Yukari Scarlet Weather Rhapsody Ver",
+      "character_name": "八雲紫",
+      "en_character_name": "Yakumo Yukari",
+      "short_character_name": "Yukari SWR"
+    },
+    "洩矢諏訪子": {
+      "path": "CursorConverter/Assets/win/東方マウスカーソル　20～31",
+      "name": "洩矢諏訪子",
+      "en_name": "Suwako Moriya",
+      "character_name": "洩矢諏訪子",
+      "en_character_name": "Suwako Moriya",
+      "short_character_name": "Suwako"
+    },
+    "蓬莱山輝夜": {
+      "path": "CursorConverter/Assets/win/東方マウスカーソル　20～31",
+      "name": "蓬莱山輝夜",
+      "en_name": "Kaguya Houraisan",
+      "character_name": "蓬莱山輝夜",
+      "en_character_name": "Kaguya Houraisan",
+      "short_character_name": "Kaguya"
+    },
+    "鈴仙・優曇華院・イナバ": {
+      "path": "CursorConverter/Assets/win/東方マウスカーソル　20～31",
+      "name": "鈴仙・優曇華院・イナバ",
+      "en_name": "Reisen Udonge",
+      "character_name": "鈴仙・優曇華院・イナバ",
+      "en_character_name": "Reisen Udongein Inaba",
+      "short_character_name": "Reisen"
+    },
+    "因幡てゐ": {
+      "path": "CursorConverter/Assets/win/東方マウスカーソル　20～31",
+      "name": "因幡てゐ",
+      "en_name": "Inaba Tewi",
+      "character_name": "てゐ",
+      "en_character_name": "Inaba Tewi",
+      "short_character_name": "Tewi"
+    },
+    "ルーミア": {
+      "path": "CursorConverter/Assets/win/東方マウスカーソル　20～31",
+      "name": "ルーミア",
+      "en_name": "Rumia",
+      "character_name": "ルーミア",
+      "en_character_name": "Rumia",
+      "short_character_name": "Rumia"
+    },
+    "純狐": {
+      "path": "CursorConverter/Assets/win/東方マウスカーソル　20～31",
+      "name": "純狐",
+      "en_name": "Junko",
+      "character_name": "純狐",
+      "en_character_name": "Junko",
+      "short_character_name": "Junko"
+    },
+    "上白沢慧音": {
+      "path": "CursorConverter/Assets/win/東方マウスカーソル　20～31",
+      "name": "上白沢慧音",
+      "en_name": "Keine",
+      "character_name": "上白沢慧音",
+      "en_character_name": "Kamishirasawa Keine",
+      "short_character_name": "Keine"
+    },
+    "上白沢慧音（ハクタク Ver）": {
+      "path": "CursorConverter/Assets/win/東方マウスカーソル　20～31",
+      "name": "上白沢慧音（ハクタク Ver）",
+      "en_name": "Keine (Hakutaku Ver)",
+      "character_name": "上白沢慧音（ハクタク Ver）",
+      "en_character_name": "Kamishirasawa Keine (Hakutaku Ver)",
+      "short_character_name": "Keine_Hakutaku"
     }
   },
   "東方マウスカーソル　11～20": {
@@ -1205,7 +1267,7 @@
   },
   "艦これ　3弾　マウスカーソル": {
     "アイオワ": {
-      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル",
       "name": "アイオワ",
       "en_name": "Iowa",
       "character_name": "アイオワ",
@@ -1213,7 +1275,7 @@
       "short_character_name": "Iowa"
     },
     "ウォースパイト": {
-      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル",
       "name": "ウォースパイト",
       "en_name": "Warspite",
       "character_name": "ウォースパイト",
@@ -1221,7 +1283,7 @@
       "short_character_name": "Warspite"
     },
     "ガングート": {
-      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル",
       "name": "ガングート",
       "en_name": "Gangut",
       "character_name": "ガングート",
@@ -1229,7 +1291,7 @@
       "short_character_name": "Gangut"
     },
     "ガンビア・ベイ": {
-      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル",
       "name": "ガンビア・ベイ",
       "en_name": "Gambier Bay",
       "character_name": "ガンビア・ベイ",
@@ -1237,7 +1299,7 @@
       "short_character_name": "Gambier Bay"
     },
     "グラーフ・ツェッペリン": {
-      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル",
       "name": "グラーフ・ツェッペリン",
       "en_name": "Graf Zeppelin",
       "character_name": "グラーフ・ツェッペリン",
@@ -1245,7 +1307,7 @@
       "short_character_name": "Graf Zeppelin"
     },
     "コロラド": {
-      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル",
       "name": "コロラド",
       "en_name": "Colorado",
       "character_name": "コロラド",
@@ -1253,7 +1315,7 @@
       "short_character_name": "Colorado"
     },
     "ゴトランド": {
-      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル",
       "name": "ゴトランド",
       "en_name": "Gotland",
       "character_name": "ゴトランド",
@@ -1261,7 +1323,7 @@
       "short_character_name": "Gotland"
     },
     "サラトガ": {
-      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル",
       "name": "サラトガ",
       "en_name": "Saratoga",
       "character_name": "サラトガ",
@@ -1269,7 +1331,7 @@
       "short_character_name": "Saratoga"
     },
     "ザラ": {
-      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル",
       "name": "ザラ",
       "en_name": "Zara",
       "character_name": "ザラ",
@@ -1277,7 +1339,7 @@
       "short_character_name": "Zara"
     },
     "ポーラ": {
-      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル",
       "name": "ポーラ",
       "en_name": "Pola",
       "character_name": "ポーラ",
@@ -1285,7 +1347,7 @@
       "short_character_name": "Pola"
     },
     "春雨": {
-      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　3弾　マウスカーソル",
       "name": "春雨",
       "en_name": "Harusame",
       "character_name": "春雨",
@@ -1713,7 +1775,7 @@
   },
   "艦これ　マウスカーソル　2弾": {
     "加賀": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "加賀",
       "en_name": "Kaga",
       "character_name": "加賀",
@@ -1721,7 +1783,7 @@
       "short_character_name": "Kaga"
     },
     "加賀　着物": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "加賀　着物",
       "en_name": "Kaga Kimono",
       "character_name": "加賀　着物",
@@ -1729,7 +1791,7 @@
       "short_character_name": "Kaga Kimono"
     },
     "北方棲姫": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "北方棲姫",
       "en_name": "Northern Princess",
       "character_name": "北方棲姫",
@@ -1737,7 +1799,7 @@
       "short_character_name": "Northern Princess"
     },
     "卯月": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "卯月",
       "en_name": "Uzuki",
       "character_name": "卯月",
@@ -1745,7 +1807,7 @@
       "short_character_name": "Uzuki"
     },
     "吹雪": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "吹雪",
       "en_name": "Fubuki",
       "character_name": "吹雪",
@@ -1753,7 +1815,7 @@
       "short_character_name": "Fubuki"
     },
     "夕立": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "夕立",
       "en_name": "Yuudachi",
       "character_name": "夕立",
@@ -1761,7 +1823,7 @@
       "short_character_name": "Yuudachi"
     },
     "夕立改二": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "夕立改二",
       "en_name": "Yuudachi Kai Ni",
       "character_name": "夕立改二",
@@ -1769,7 +1831,7 @@
       "short_character_name": "Yuudachi Kai Ni"
     },
     "如月": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "如月",
       "en_name": "Kisaragi",
       "character_name": "如月",
@@ -1777,7 +1839,7 @@
       "short_character_name": "Kisaragi"
     },
     "妙高": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "妙高",
       "en_name": "Myoukou",
       "character_name": "妙高",
@@ -1785,7 +1847,7 @@
       "short_character_name": "Myoukou"
     },
     "山城": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "山城",
       "en_name": "Yamashiro",
       "character_name": "山城",
@@ -1793,7 +1855,7 @@
       "short_character_name": "Yamashiro"
     },
     "川内": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "川内",
       "en_name": "Sendai",
       "character_name": "川内",
@@ -1801,7 +1863,7 @@
       "short_character_name": "Sendai"
     },
     "弥生": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "弥生",
       "en_name": "Yayoi",
       "character_name": "弥生",
@@ -1809,7 +1871,7 @@
       "short_character_name": "Yayoi"
     },
     "手書き": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "手書き",
       "en_name": "Hand-drawn",
       "character_name": "手書き",
@@ -1817,7 +1879,7 @@
       "short_character_name": "Hand-drawn"
     },
     "扶桑": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "扶桑",
       "en_name": "Fusou",
       "character_name": "扶桑",
@@ -1825,7 +1887,7 @@
       "short_character_name": "Fusou"
     },
     "睦月": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "睦月",
       "en_name": "Mutsuki",
       "character_name": "睦月",
@@ -1833,7 +1895,7 @@
       "short_character_name": "Mutsuki"
     },
     "磯風": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "磯風",
       "en_name": "Isokaze",
       "character_name": "磯風",
@@ -1841,7 +1903,7 @@
       "short_character_name": "Isokaze"
     },
     "神通": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "神通",
       "en_name": "Jintsuu",
       "character_name": "神通",
@@ -1849,7 +1911,7 @@
       "short_character_name": "Jintsuu"
     },
     "祥鳳": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "祥鳳",
       "en_name": "Shouhou",
       "character_name": "祥鳳",
@@ -1857,7 +1919,7 @@
       "short_character_name": "Shouhou"
     },
     "秋月": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "秋月",
       "en_name": "Akizuki",
       "character_name": "秋月",
@@ -1865,7 +1927,7 @@
       "short_character_name": "Akizuki"
     },
     "羽黒": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "羽黒",
       "en_name": "Haguro",
       "character_name": "羽黒",
@@ -1873,7 +1935,7 @@
       "short_character_name": "Haguro"
     },
     "赤城": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "赤城",
       "en_name": "Akagi",
       "character_name": "赤城",
@@ -1881,7 +1943,7 @@
       "short_character_name": "Akagi"
     },
     "足柄": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "足柄",
       "en_name": "Ashigara",
       "character_name": "足柄",
@@ -1889,7 +1951,7 @@
       "short_character_name": "Ashigara"
     },
     "那智": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "那智",
       "en_name": "Nachi",
       "character_name": "那智",
@@ -1897,7 +1959,7 @@
       "short_character_name": "Nachi"
     },
     "那珂": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "那珂",
       "en_name": "Naka",
       "character_name": "那珂",
@@ -1905,7 +1967,7 @@
       "short_character_name": "Naka"
     },
     "鳳翔": {
-      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾/アニメーション",
+      "path": "CursorConverter/Assets/win/艦これ　マウスカーソル　2弾",
       "name": "鳳翔",
       "en_name": "Houshou",
       "character_name": "鳳翔",
