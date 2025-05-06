@@ -217,7 +217,7 @@ def main() -> None:
 
     if args.comment and args.name:
         template: Dict[str, Template] = {
-            "index.theme": Template('[Icon Theme]\nName="$theme_name Cursors"\nComment="$comment"\n'),
+            "index.theme": Template('[Icon Theme]\nName="$theme_name"\nComment="$comment"\n'),
         }
         for file_name, string_template in template.items():
             data = string_template.safe_substitute(theme_name=args.name, comment=args.comment)
