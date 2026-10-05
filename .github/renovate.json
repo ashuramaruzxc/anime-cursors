@@ -1,0 +1,33 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    "group:all"
+  ],
+  "timezone": "Europe/Sofia",
+  "dependencyDashboard": false,
+  "automerge": true,
+  "automergeType": "branch",
+  "ignoreTests": true,
+  "commitBodyTable": true,
+  "vulnerabilityAlerts": {
+    "enabled": false
+  },
+  "nix": {
+    "enabled": true
+  },
+  "pep621": {
+    "enabled": true
+  },
+  "pre-commit": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": [
+      "* 0-5 1 * *"
+    ]
+  },
+  "forkProcessing": "enabled"
+}

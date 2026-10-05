@@ -1,64 +1,124 @@
 # Anime Cursors
 
-Python library wrapper for [cursorgen](https://github.com/ashuramaruzxc/cursorgen) for building animated
-and static cursors primarily made by [[夜夢（よるむ)](https://www.pixiv.net/en/users/345405)]
+Animated anime cursor themes for Linux, using artwork by
+[夜夢（よるむ）](https://www.pixiv.net/en/users/345405). This project downloads
+the artist's Windows `.ani` cursors and converts them into installable Xcursor
+themes with [cursorgen](https://github.com/ashuramaruzxc/cursorgen).
 
-## Requirements
+## Install a theme
 
-* Python version 3.7.5 or higher
-* [cursorgen](https://github.com/ashuramaruzxc/cursorgen) >= 1.0.0
+On Linux, install [uv](https://docs.astral.sh/uv/getting-started/installation/)
+and Git, then clone the repository and install its dependencies. uv manages
+Python 3.14 for you.
 
-## Installation
+```sh
+git clone https://github.com/ashuramaruzxc/anime-cursors.git
+cd anime-cursors
+uv python install
+uv sync --locked
+```
 
-### Python
+Build and install Hakurei Reimu's theme:
 
-* Clone the repo
-* `pip install cursorgen -e https://github.com/ashuramaruzxc/cursorgen#egg=cursorgen`
+```sh
+uv run --locked python process_cursors.py \
+  --theme hakurei-reimu --format directory --jobs 4
+mkdir -p ~/.local/share/icons
+cp -a dist/anime-hakurei-reimu ~/.local/share/icons/
+```
 
-### NixOS/Nix
+Select **Hakurei Reimu** in your desktop's cursor settings. Its theme directory
+is `anime-hakurei-reimu`; use that name when configuring a cursor theme by ID.
+If applications keep showing the old cursor, log out and back in.
 
-* Clone the repo
-* Ensure that `nix >= 2.37` is installed
-* in`nix.conf` put `experimental-features = nix-command flakes`
-* `nix-env -iA nixpkgs.direnv`
-* `direnv allow`
+### Choose another theme
 
-## Usage
+List theme IDs and any missing cursor roles:
 
-If you have animated or static (.ani | .cur) files you can simply run:
+```sh
+uv run --locked python process_cursors.py --list
+```
 
-    python -m CursorConverter --prefix /Path/To/Directory With Cursors
-It will create a directory `dist` with cursorname directory, thumbnail and simple index.theme file
+Replace `hakurei-reimu` in the build and copy commands with your chosen ID. Only
+themes with an empty `missing_roles` list can be built. Repeat `--theme` to
+select several themes, or omit it to build all complete themes.
 
-However, if you want to make a custom name and add a comment:
+Builds download and cache the required artwork automatically. Without
+`--format directory`, they produce `dist/<theme-id>.zip`; extract each ZIP into
+`~/.local/share/icons/anime-<theme-id>/` to install it.
 
-    python -m CursorConverter \
-    --prefix /Path/To/Directory With Cursors \
-    --name "Sample" \
-    --comment "Sample"
-You can also specify amount of jobs(something like make -j16...) in order to speed up converter a bit:
+## Nix
 
-    python -m CursorConverter --prefix /Path/To/Directory With Cursors -j numberOfJobs
+On Linux with flakes enabled, run these commands from the repository checkout:
 
-## Media Assets
+```sh
+nix build .#anime-hakurei-reimu
+mkdir -p ~/.local/share/icons
+cp -aL result/share/icons/anime-hakurei-reimu ~/.local/share/icons/
+```
 
-This project utilizes media assets that are created by [夜夢（よるむ)](https://www.pixiv.net/en/users/345405), who gave permission to modify and redistribute their work.
+Select the theme in your desktop settings as above. Use `#anime-cursors` instead
+to build all complete themes.
 
-Please note that if you plan to use or redistribute these assets, you must adhere to the terms of the license. See the [LICENSE](COPYING.CC-BY-NC-SA.4.0.md) file for details.
+### NixOS or Home Manager
 
-## Credits
+Add the checkout to your configuration flake, replacing the path below with its
+absolute path:
 
-* Media Assets by: 夜夢（よるむ)
-* [Author's Pixiv Profile](https://www.pixiv.net/en/users/345405)
-* Some cursors were ported by [muha0644](https://www.pling.com/u/muha0644), which were used as reference.
-  
+```nix
+inputs.anime-cursors.url = "path:/absolute/path/to/anime-cursors";
+```
+
+Pass `inputs` through `specialArgs` (or Home Manager's `extraSpecialArgs`), then
+add this module to your configuration:
+
+```nix
+{ inputs, lib, ... }:
+{
+  imports = [ inputs.anime-cursors.nixosModules.default ];
+
+  nixpkgs.config.allowUnfreePredicate =
+    pkg: lib.hasPrefix "anime-cursors" (lib.getName pkg);
+
+  programs.anime-cursors = {
+    enable = true;
+    theme = "hakurei-reimu";
+    size = 32;
+  };
+}
+```
+
+For Home Manager, use `inputs.anime-cursors.homeManagerModules.default` instead.
+If you already have an unfree predicate, extend it to allow these packages. With
+Home Manager's `useGlobalPkgs`, set it in NixOS instead.
+
+The NixOS module sets session defaults and SDDM's cursor; desktop settings can
+override them. Home Manager configures `home.pointerCursor`; enable `gtk.enable`
+to apply its GTK settings. Rebuild your configuration and log in again to load
+the session defaults.
+
+## Convert your own cursors
+
+After the uv setup above, convert a complete directory of `.ani` files:
+
+```sh
+uv run --locked python -m CursorConverter \
+  --prefix /path/to/cursors --name Sample --jobs 4
+```
+
+The output is `dist/Sample/`. Filenames must match the [default role
+mapping](CursorConverter/config/definitions_jp.json), or a custom mapping
+supplied with `--json`. Use `--help` for all converter options.
+
+## Credits and license
+
+Cursor artwork by [夜夢（よるむ）](https://www.pixiv.net/en/users/345405),
+redistributed with permission under CC BY-NC-SA 4.0. Conversion code is GPLv3;
+see [LICENSE](LICENSE) and the author notices included with built themes.
+Earlier ports by [muha0644](https://www.pling.com/u/muha0644) served as a
+reference.
+
 ## Contact
 
-* [ashuramaru@tenjin-dk.com](mailto:ashuramaru@tenjin-dk.com)
-
-## HUGE TODO:
-- Tag every cursor properly
-- Overall amount of xcursor files supposed to be 76 so have to fix somehow `definitions_jp.json`
-- Restructure directories since we don't need static cursors here
-- Consider using devenv scripts for building cursors
-- Add set of packages similar to `pkgs.catppuccin-cursors`
+For questions or abuse reports, contact
+[ashuramaru@tenjin-dk.com](mailto:ashuramaru@tenjin-dk.com).

@@ -1,122 +1,91 @@
 {
-  description = "Animeted Cursors on Linux";
+  description = "Animated cursor themes for Linux";
+
+  inputs = {
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
+    cursorgen = {
+      url = "github:meanvoid/cursorgen";
+      flake = false;
+    };
+  };
 
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ inputs.devenv.flakeModule ];
       systems = [
         "x86_64-linux"
         "aarch64-linux"
       ];
-
+      flake.overlays.default = final: _prev: {
+        anime-cursors-packages = final.callPackage ./pkgs { cursorgenSrc = inputs.cursorgen; };
+        anime-cursors = final.anime-cursors-packages.cursors;
+      };
+      flake = {
+        nixosModules.default = import ./modules/nixos.nix { overlay = inputs.self.overlays.default; };
+        homeManagerModules.default = import ./modules/home-manager.nix {
+          overlay = inputs.self.overlays.default;
+        };
+      };
       perSystem =
-        { pkgs, system, ... }:
+        {
+          config,
+          pkgs,
+          system,
+          ...
+        }:
         {
           _module.args.pkgs = import inputs.nixpkgs {
             inherit system;
-            config = {
-              allowUnfree = true;
-            };
+            overlays = [ inputs.self.overlays.default ];
+            config.allowUnfreePredicate =
+              pkg: inputs.nixpkgs.lib.strings.hasPrefix "anime-cursors" (inputs.nixpkgs.lib.strings.getName pkg);
           };
+          packages = {
+            inherit (pkgs.anime-cursors-packages) cursorgen converter;
+            inherit (pkgs) anime-cursors xcursor-viewer;
+            cursors = pkgs.anime-cursors;
+            default = pkgs.anime-cursors;
+          }
+          // pkgs.lib.attrsets.mapAttrs' (
+            name: _:
+            pkgs.lib.attrsets.nameValuePair "anime-${name}"
+              (pkgs.anime-cursors.override {
+                themes = [ name ];
+              }).variants.${name}
+          ) pkgs.anime-cursors.variants;
           checks = {
-            pre-commit-check =
-              let
-                excludes = [
-                  ".direnv"
-                  ".devenv"
-                ];
-              in
-              inputs.pre-commit-hooks.lib.${system}.run {
-                src = ./.;
-                hooks.shellcheck.enable = true;
-                hooks.nixfmt-rfc-style = {
-                  enable = true;
-                  packages = pkgs.nixfmt-rfc-style;
-                  inherit excludes;
-                };
-              };
+            inherit (config.packages) converter cursorgen cursors;
           };
-          devenv.shells.default = {
-            name = "anime-cursors env";
-            languages = {
-              nix.enable = true;
-              shell.enable = true;
-              python = {
-                enable = true;
-                venv = {
-                  enable = true;
-                  requirements = ''
-                    black
-                    cursorgen
-                    flake8
-                    isort
-                    mypy
-                    numpy
-                    pillow
-                    pylint
-                    tqdm
-                  '';
-                };
-                version = "3.12.9";
-              };
-            };
-            pre-commit =
-              let
-                excludes = [
-                  ".direnv"
-                  ".devenv"
-                ];
-              in
-              {
-                hooks.nixfmt-rfc-style = {
-                  enable = true;
-                  inherit excludes;
-                  package = pkgs.nixfmt-rfc-style;
-                };
-                hooks.shellcheck.enable = true;
-              };
-            packages = builtins.attrValues {
-              inherit (pkgs) zlib pylint;
-              inherit (pkgs) git pre-commit;
-              inherit (pkgs) nix-index nix-prefetch-github nix-prefetch-scripts;
-              inherit (pkgs) ffmpeg-full imagemagick;
-              xcursor-viewer = pkgs.libsForQt5.callPackage ./pkgs/xcursor-viewer.nix { };
-              cursorgen = pkgs.callPackage ./pkgs/cursorgen.nix { };
-            };
-          };
-          formatter = pkgs.nixfmt-rfc-style;
-          packages =
+          formatter = pkgs.nixfmt;
+          devShells.default =
             let
-              cursorgenPkg = pkgs.callPackage ./pkgs/cursorgen.nix { };
-              xcursorViewerPkg = pkgs.libsForQt5.callPackage ./pkgs/xcursor-viewer.nix { };
+              cursorPython = config.packages.converter.pythonModule.withPackages (
+                _: pkgs.lib.attrsets.attrValues { inherit (config.packages) converter; }
+              );
             in
-            {
-              # debug packages outputs
-              cursorgen = cursorgenPkg;
-              xcursor-viewer = xcursorViewerPkg;
-              cursors = pkgs.callPackage ./pkgs/cursors.nix {
-                cursorgen = cursorgenPkg;
+            pkgs.mkShell {
+              packages = pkgs.lib.attrsets.attrValues {
+                inherit cursorPython;
+                inherit (pkgs)
+                  uv
+                  nixfmt
+                  actionlint
+                  pre-commit
+                  imagemagick
+                  ffmpeg
+                  ;
+                build-cursors = pkgs.writeShellApplication {
+                  name = "build-cursors";
+                  text = ''${cursorPython.interpreter} process_cursors.py "$@"'';
+                };
+                audit-cursors = pkgs.writeShellApplication {
+                  name = "audit-cursors";
+                  text = ''${cursorPython.interpreter} parse_directories.py "$@"'';
+                };
               };
             };
         };
     };
-
-  inputs = {
-    # Flake-Parts and Devenv
-    # --------------------------------------------------
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    devenv.url = "github:cachix/devenv";
-    devenv.inputs.nixpkgs.follows = "nixpkgs";
-    nix2container.url = "github:nlewo/nix2container";
-    nix2container.inputs.nixpkgs.follows = "nixpkgs";
-    mk-shell-bin.url = "github:rrbutani/nix-mk-shell-bin";
-    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
-    pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
-    pre-commit-hooks.inputs.flake-compat.follows = "";
-    nixpkgs-python.url = "github:cachix/nixpkgs-python";
-    nixpkgs-python.inputs.nixpkgs.follows = "nixpkgs";
-    # --------------------------------------------------
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-  };
 }

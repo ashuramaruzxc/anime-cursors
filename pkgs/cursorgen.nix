@@ -1,28 +1,52 @@
-{ lib, python3Packages }:
-with python3Packages;
-buildPythonPackage rec {
+{
+  lib,
+  buildPythonPackage,
+  hatchling,
+  uv-build,
+  numpy,
+  pillow,
+  opencv-python-headless,
+  rich,
+  python,
+  src,
+}:
+let
+  project = lib.trivial.importTOML "${src}/pyproject.toml";
+  modern = project.build-system.build-backend == "uv_build";
+in
+buildPythonPackage {
   pname = "cursorgen";
-  version = "0.1.3";
-  format = "wheel";
-  src = fetchPypi rec {
-    inherit pname version format;
-    sha256 = "sha256-6loB+6U0grHjIcPLaHewQD7L9wGGDilPpHMtnpH+Sgc=";
-    dist = python;
-    python = "py3";
-  };
+  version = project.project.version;
+  disabled = modern && lib.strings.versionOlder python.pythonVersion "3.14";
+  pyproject = true;
+  inherit src;
 
-  doCheck = false;
-
-  propagatedBuildInputs = [
-    pillow
+  # Keep the published Pillow version usable while the updated fork is local
+  build-system = if modern then [ uv-build ] else [ hatchling ];
+  dependencies = [
     numpy
+  ]
+  ++ (
+    if modern then
+      [
+        opencv-python-headless
+        rich
+      ]
+    else
+      [ pillow ]
+  );
+
+  pythonImportsCheck = [
+    "cursorgen"
+    "cursorgen.parser"
+    "cursorgen.writer"
   ];
 
-  meta = with lib; {
-    description = " cursorgen is a fork of win2xcur that aims to preserve the image quality of the cursor ";
-    homepage = "https://github.com/ashuramaruzxc/cursorgen";
-    changelog = "https://github.com/ashuramaruzxc/cursorgen/releases/tag/v${version}";
-    license = licenses.gpl3Plus;
-    maintainers = with maintainers; [ ashuramaruzxc ];
+  meta = {
+    description = "Convert Windows cursors to X11 without losing image quality";
+    homepage = "https://github.com/meanvoid/cursorgen";
+    maintainers = [ lib.maintainers.ashuramaruzxc ];
+    license = lib.licenses.gpl3Plus;
+    mainProgram = "cursorgen";
   };
 }
