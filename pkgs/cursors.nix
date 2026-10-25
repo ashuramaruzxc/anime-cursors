@@ -13,15 +13,17 @@ let
   manifest = lib.trivial.importJSON ../CursorConverter/config/asset_sources.json;
   complete = lib.attrsets.filterAttrs (_: theme: theme.missing_roles == [ ]) catalog;
   selected = if themes == null then builtins.attrNames complete else lib.lists.unique themes;
-  requiredArchives = lib.lists.unique (
-    lib.lists.concatMap (
-      name:
+  # Use the same artwork and notice dependencies for queuing and offline extraction
+  themeArchives = lib.attrsets.mapAttrs (
+    name: theme:
+    lib.lists.unique (
       map (asset: asset.archive) (
         builtins.attrValues manifest.themes.${name}
-        ++ builtins.attrValues (manifest.notices.${catalog.${name}.group} or { })
+        ++ builtins.attrValues (manifest.notices.${theme.group} or { })
       )
-    ) selected
-  );
+    )
+  ) complete;
+  requiredArchives = lib.lists.unique (lib.lists.concatMap (name: themeArchives.${name}) selected);
   # Order the archives because builder sandboxes cannot share the Python queue
   archiveQueue = builtins.listToAttrs (
     lib.lists.zipListsWith lib.attrsets.nameValuePair requiredArchives ([ null ] ++ requiredArchives)
@@ -66,13 +68,8 @@ let
     name: theme:
     let
       notices = manifest.notices.${theme.group} or { };
-      archiveNames = lib.lists.unique (
-        map (asset: asset.archive) (
-          builtins.attrValues manifest.themes.${name} ++ builtins.attrValues notices
-        )
-      );
       archiveMap = writeText "${name}-archives.json" (
-        builtins.toJSON (lib.attrsets.genAttrs archiveNames (key: archives.${key}))
+        builtins.toJSON (lib.attrsets.genAttrs themeArchives.${name} (key: archives.${key}))
       );
     in
     stdenvNoCC.mkDerivation {

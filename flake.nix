@@ -71,6 +71,7 @@
                 inherit (pkgs)
                   uv
                   nixfmt
+                  deadnix
                   actionlint
                   pre-commit
                   imagemagick
