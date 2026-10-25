@@ -3,11 +3,11 @@
     "cursorgen": {
       "flake": false,
       "locked": {
-        "lastModified": 1710674588,
-        "narHash": "sha256-iteC1q1ZirXvG9ynzl2rDDgSqGjV/yq6nHOjaJkzOi0=",
+        "lastModified": 1792963013,
+        "narHash": "sha256-QFDKJlHXTywNP0IQZIEJ4WicZhSXgcV5WkDvQia1HyQ=",
         "owner": "meanvoid",
         "repo": "cursorgen",
-        "rev": "f8665d1fa6e8ec5dfb165fc1bd9cb9a7a8121809",
+        "rev": "53fbe520d588409914cc7669b6923621f49f48f4",
         "type": "github"
       },
       "original": {

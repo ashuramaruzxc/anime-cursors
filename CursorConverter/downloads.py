@@ -5,6 +5,7 @@ import hashlib
 import html
 import http.client
 import json
+import math
 import os
 import re
 import shutil
@@ -76,7 +77,8 @@ class RequestPacer(urllib.request.BaseHandler):
                 delay = self.next_request - time.monotonic()
                 if delay <= 0:
                     break
-                time.sleep(delay)
+                # Bound each sleep so large server cooldowns cannot overflow the timer
+                time.sleep(min(delay, REQUEST_TIMEOUT))
             self.next_request = time.monotonic() + REQUEST_INTERVAL
         return request
 
@@ -128,9 +130,10 @@ def open_url(url: str, data: bytes | None = None):
 
 def retry_after(error: urllib.error.HTTPError) -> float:
     """Respect server cooldowns expressed as seconds or an HTTP date"""
-    value = error.headers.get("Retry-After", "")
+    value = error.headers.get("Retry-After", "").strip()
     if value.isascii() and value.isdigit():
-        return float(value)
+        delay = float(value)
+        return delay if math.isfinite(delay) else REQUEST_INTERVAL
     try:
         retry_date = parsedate_to_datetime(value)
         delay = retry_date.timestamp() - time.time()
@@ -188,6 +191,9 @@ def _download_archive(archive: Archive, destination: Path) -> None:
                     url = archive["url"]
                 with temporary.open("wb") as stream, open_url(url) as response:
                     shutil.copyfileobj(response, stream)
+                    # Bounded HTTP reads can return EOF before Content-Length without raising
+                    if getattr(response, "length", None):
+                        raise ConnectionError(f"Incomplete download: {url}")
                 break
             except (
                 DownloadLinkError,
@@ -215,9 +221,20 @@ def main() -> None:
     parser.add_argument("archive", type=Path, help="JSON archive description")
     parser.add_argument("output", type=Path, help="Destination for the verified archive")
     args = parser.parse_args()
-    archive_data = args.archive.read_text()
-    archive = cast(Archive, json.loads(archive_data))
-    download_archive(archive, args.output)
+    try:
+        archive_data = json.loads(args.archive.read_text(encoding=PAGE_ENCODING))
+        if not isinstance(archive_data, dict):
+            raise ValueError("Archive description must be a JSON object")
+        for field in ("url", "sha256", "page"):
+            if not isinstance(archive_data.get(field), str):
+                raise ValueError(f"Archive field {field!r} must be a string")
+        for field in ("kind", "keyword"):
+            if field in archive_data and not isinstance(archive_data[field], str):
+                raise ValueError(f"Archive field {field!r} must be a string")
+        archive = cast(Archive, archive_data)
+        download_archive(archive, args.output)
+    except (OSError, ValueError, http.client.HTTPException) as error:
+        parser.error(str(error))
 
 
 if __name__ == "__main__":

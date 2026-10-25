@@ -2,6 +2,7 @@
 
 import argparse
 import hashlib
+import http.client
 import os
 import tempfile
 import zipfile
@@ -57,7 +58,7 @@ def ensure_assets(themes: list[str] | None = None, archive_paths: dict[str, str]
     for root, name, members in collections:
         for filename, asset in members.items():
             member_path = Path(filename)
-            if Path(name).name != name or member_path.is_absolute() or ".." in member_path.parts:
+            if name == ".." or Path(name).name != name or member_path.is_absolute() or ".." in member_path.parts:
                 raise ValueError(f"Invalid asset destination: {name}/{filename}")
             destination = root / name / filename
             expected_checksum = asset.sha256
@@ -67,6 +68,8 @@ def ensure_assets(themes: list[str] | None = None, archive_paths: dict[str, str]
         archive = manifest.archives[key]
         archive_checksum = archive["sha256"]
         if archive_paths is not None:
+            if key not in archive_paths:
+                raise ValueError(f"No local archive supplied for {key}")
             path = Path(archive_paths[key])
             if digest(path) != archive_checksum:
                 raise ValueError(f"Archive checksum mismatch: {path}")
@@ -77,7 +80,10 @@ def ensure_assets(themes: list[str] | None = None, archive_paths: dict[str, str]
                 download_archive(archive, path)
         with zipfile.ZipFile(path, metadata_encoding=ARCHIVE_FILENAME_ENCODING) as bundle:
             for destination, asset in assets:
-                data = bundle.read(asset.member)
+                try:
+                    data = bundle.read(asset.member)
+                except KeyError as error:
+                    raise ValueError(f"Missing archive member {asset.member!r} in {path}") from error
                 checksum = hashlib.sha256(data).hexdigest()
                 if checksum != asset.sha256:
                     raise ValueError(f"Cursor checksum mismatch: {destination.name}")
@@ -97,17 +103,26 @@ def main() -> None:
     parser.add_argument("--download", help="Download one archive ID instead of extracting cursors")
     parser.add_argument("--output", type=Path, help="Destination for --download")
     args = parser.parse_args()
-    if args.download:
-        if args.output is None:
-            parser.error("--download requires --output")
-        manifest = load_manifest()
-        archive = manifest.archives[args.download]
-        download_archive(archive, args.output)
-    else:
-        archive_paths = None
-        if args.archive_map:
-            archive_paths = read_json(args.archive_map, ARCHIVE_MAP_DECODER, "archive map")
-        ensure_assets(args.theme, archive_paths)
+    if args.output is not None and not args.download:
+        parser.error("--output requires --download")
+    if args.download and (args.theme is not None or args.archive_map is not None):
+        parser.error("--download cannot be combined with --theme or --archive-map")
+    if args.download and args.output is None:
+        parser.error("--download requires --output")
+    try:
+        if args.download:
+            manifest = load_manifest()
+            if args.download not in manifest.archives:
+                parser.error(f"Unknown archive: {args.download}")
+            archive = manifest.archives[args.download]
+            download_archive(archive, args.output)
+        else:
+            archive_paths = None
+            if args.archive_map:
+                archive_paths = read_json(args.archive_map, ARCHIVE_MAP_DECODER, "archive map")
+            ensure_assets(args.theme, archive_paths)
+    except (OSError, ValueError, zipfile.BadZipFile, http.client.HTTPException) as error:
+        parser.error(str(error))
 
 
 if __name__ == "__main__":

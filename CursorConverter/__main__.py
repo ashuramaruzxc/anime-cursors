@@ -3,6 +3,7 @@
 import argparse
 import json
 import logging
+import tempfile
 import unicodedata
 from concurrent.futures import ProcessPoolExecutor
 from configparser import ConfigParser
@@ -53,35 +54,40 @@ def build_theme(sources: dict[str, Path], output: Path, name: str, comment: str,
     expected_names = set(aliases)
     if len(aliases) != EXPECTED_ALIAS_COUNT or len(expected_names) != EXPECTED_ALIAS_COUNT:
         raise ValueError(f"The Xcursor mapping must contain exactly {EXPECTED_ALIAS_COUNT} unique names")
-    if output.exists() and any(output.iterdir()):
+    if output.exists() and (not output.is_dir() or any(output.iterdir())):
         raise ValueError(f"Output already contains files: {output}; use a clean output directory")
-    cursor_directory = output / CURSOR_DIRECTORY
-    cursor_directory.mkdir(parents=True, exist_ok=True)
-    theme = ThemeConfig(interpolation=None)
-    theme[THEME_INDEX_SECTION] = {"Name": name, "Comment": comment}
-    index_path = output / THEME_INDEX_FILENAME
-    with index_path.open("w", encoding=TEXT_ENCODING) as stream:
-        theme.write(stream, space_around_delimiters=False)
-    convert = partial(process, output=output, mapping=mapping, sizes=CURSOR_SIZES)
-    source_paths = []
-    for role in mapping:
-        source_paths.append(sources[role])
-    console = Console(stderr=True)
-    with ProcessPoolExecutor(max_workers=jobs) as pool:
-        results = pool.map(convert, source_paths, mapping, buffersize=jobs)
-        for _ in track(
-            results,
-            total=len(mapping),
-            description="Converting cursor roles",
-            console=console,
-            disable=not console.is_terminal,
-        ):
-            pass
-    actual_names = set()
-    for path in cursor_directory.iterdir():
-        actual_names.add(path.name)
-    if actual_names != expected_names:
-        raise ValueError("Output contains unexpected or missing cursor names; use a clean output directory")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(dir=output.parent, prefix=f".{output.name}-") as temporary:
+        staged_output = Path(temporary) / "theme"
+        cursor_directory = staged_output / CURSOR_DIRECTORY
+        cursor_directory.mkdir(parents=True)
+        theme = ThemeConfig(interpolation=None)
+        theme[THEME_INDEX_SECTION] = {"Name": name, "Comment": comment}
+        index_path = staged_output / THEME_INDEX_FILENAME
+        with index_path.open("w", encoding=TEXT_ENCODING) as stream:
+            theme.write(stream, space_around_delimiters=False)
+        convert = partial(process, output=staged_output, mapping=mapping, sizes=CURSOR_SIZES)
+        source_paths = []
+        for role in mapping:
+            source_paths.append(sources[role])
+        console = Console(stderr=True)
+        with ProcessPoolExecutor(max_workers=jobs) as pool:
+            results = pool.map(convert, source_paths, mapping, buffersize=jobs)
+            for _ in track(
+                results,
+                total=len(mapping),
+                description="Converting cursor roles",
+                console=console,
+                disable=not console.is_terminal,
+            ):
+                pass
+        actual_names = set()
+        for path in cursor_directory.iterdir():
+            actual_names.add(path.name)
+        if actual_names != expected_names:
+            raise ValueError("Output contains unexpected or missing cursor names; use a clean output directory")
+        # Publishing a complete directory also prevents concurrent builds mixing files
+        staged_output.replace(output)
 
 
 def match_files(paths: list[Path], rename_map: dict[str, list[str]]) -> tuple[list[tuple[Path, str]], list[str]]:
@@ -198,6 +204,8 @@ def main() -> None:
         parser.error("--jobs must be at least 1")
     if not args.prefix.is_dir():
         parser.error(f"Cursor directory does not exist: {args.prefix}")
+    if not args.name or args.name in {".", ".."} or Path(args.name).name != args.name:
+        parser.error("--name must be a single directory name")
     mapping_path = args.json
     if not mapping_path:
         mapping_path = JAPANESE_MAPPING_PATH
@@ -236,7 +244,7 @@ def main() -> None:
     try:
         theme_output = args.output / args.name
         build_theme(sources_by_role, theme_output, args.name, args.comment, args.jobs)
-    except ValueError as error:
+    except (OSError, ValueError) as error:
         parser.error(str(error))
 
 

@@ -74,13 +74,29 @@ def write_theme_notices(name: str, theme: Theme, manifest: Manifest, output: Pat
 
 def package_theme(name: str, source: Path, output_root: Path, output_format: str) -> None:
     if output_format == ZIP_FORMAT:
-        archive_path = output_root / name
-        shutil.make_archive(str(archive_path), ZIP_FORMAT, root_dir=source)
+        archive_path = output_root / f"{name}.zip"
+        with tempfile.TemporaryDirectory(dir=output_root, prefix=f".{name}-") as temporary:
+            staged_archive = Path(temporary) / name
+            archive = Path(shutil.make_archive(str(staged_archive), ZIP_FORMAT, root_dir=source))
+            try:
+                # A hard link publishes the finished archive without replacing a rival
+                archive_path.hardlink_to(archive)
+            except FileExistsError as error:
+                raise ValueError(f"Output already exists: {archive_path}") from error
     else:
         destination = output_root / f"{THEME_DIRECTORY_PREFIX}{name}"
-        if destination.exists():
+        if destination.exists(follow_symlinks=False):
             raise ValueError(f"Output already exists: {destination}")
-        source.copy(destination, follow_symlinks=False, preserve_metadata=True)
+        # Copy beside the destination so failures never publish a partial theme
+        with tempfile.TemporaryDirectory(dir=output_root, prefix=f".{name}-") as temporary:
+            staged_output = Path(temporary) / destination.name
+            source.copy(staged_output, follow_symlinks=False, preserve_metadata=True)
+            try:
+                staged_output.replace(destination)
+            except OSError as error:
+                if destination.exists(follow_symlinks=False):
+                    raise ValueError(f"Output already exists: {destination}") from error
+                raise
 
 
 def main() -> None:
@@ -108,17 +124,20 @@ def main() -> None:
     except ValueError as error:
         parser.error(str(error))
 
-    args.output.mkdir(parents=True, exist_ok=True)
+    try:
+        args.output.mkdir(parents=True, exist_ok=True)
+    except OSError as error:
+        parser.error(str(error))
     for name in selected:
         theme = catalog[name]
         with tempfile.TemporaryDirectory() as temporary:
             output = Path(temporary) / name
-            sources = theme_sources(name, theme)
-            build_theme(sources, output, theme.name, theme.group, args.jobs)
-            write_theme_notices(name, theme, manifest, output)
             try:
+                sources = theme_sources(name, theme)
+                build_theme(sources, output, theme.name, theme.group, args.jobs)
+                write_theme_notices(name, theme, manifest, output)
                 package_theme(name, output, args.output, args.format)
-            except ValueError as error:
+            except (OSError, ValueError) as error:
                 parser.error(str(error))
         print(f"Built {name}", flush=True)
 
