@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.debugpy",
+    "jnoortheen.nix-ide",
+    "tamasfe.even-better-toml",
+    "github.vscode-github-actions",
+    "charliermarsh.ruff",
+    "astral-sh.ty"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "cursor-renovate",
+  "private": true,
+  "packageManager": "npm@12.2.0",
+  "scripts": {
+    "extract": "cd ../.. && LOG_LEVEL=warn .github/renovate/node_modules/.bin/renovate --platform=local --onboarding=false --dry-run=extract --require-config=required",
+    "renovate": "renovate",
+    "validate": "renovate-config-validator --strict --no-global ../renovate.json"
+  },
+  "devDependencies": {
+    "renovate": "44.134.1"
+  }
+}

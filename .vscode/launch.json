@@ -1,0 +1,43 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "CursorConverter: convert a directory",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "CursorConverter",
+      "args": ["--prefix", "${input:cursorDirectory}", "--format", "${input:cursorFormat}", "--jobs", "1"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "subProcess": true,
+      "justMyCode": true,
+      "preLaunchTask": "uv: sync"
+    },
+    {
+      "name": "Cursors: build complete animated themes",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/process_cursors.py",
+      "args": ["--jobs", "1", "--verbose"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "subProcess": true,
+      "justMyCode": true,
+      "preLaunchTask": "uv: sync"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "cursorDirectory",
+      "type": "promptString",
+      "description": "Directory containing cursor files (absolute or relative to the workspace)"
+    },
+    {
+      "id": "cursorFormat",
+      "type": "pickString",
+      "description": "Cursor file format",
+      "options": ["ani", "cur"],
+      "default": "ani"
+    }
+  ]
+}

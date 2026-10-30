@@ -1,0 +1,54 @@
+name: Renovate
+
+on:
+  schedule:
+    - cron: "37 0 */2 * *"
+  push:
+    branches: [master]
+    paths:
+      - .github/renovate.json
+      - .github/renovate/**
+      - .github/workflows/renovate.yaml
+      - flake.nix
+      - flake.lock
+      - pyproject.toml
+      - uv.lock
+      - .pre-commit-config.yaml
+  workflow_dispatch:
+
+concurrency:
+  group: renovate
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  renovate:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      statuses: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31.11.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+      - name: Install Renovate
+        run: npm ci --prefix .github/renovate
+      - name: Validate configuration
+        run: npm run --prefix .github/renovate validate
+      - name: Update dependencies without PRs
+        run: .github/renovate/node_modules/.bin/renovate
+        env:
+          LOG_LEVEL: info
+          RENOVATE_EXIT_CODE_FOR_ERRORS: "true"
+          RENOVATE_TOKEN: ${{ github.token }}
+          RENOVATE_ONBOARDING: "false"
+          RENOVATE_REPOSITORIES: '["${{ github.repository }}"]'

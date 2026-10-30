@@ -1,0 +1,31 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports.ruff": "explicit"
+    },
+    "editor.rulers": [
+      120
+    ]
+  },
+  "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  },
+  "nix.formatterPath": "nixfmt",
+  "files.watcherExclude": {
+    "**/.jj/**": true,
+    "**/.venv/**": true,
+    "**/.direnv/**": true,
+    "**/dist/**": true,
+    "**/result/**": true
+  },
+  "search.exclude": {
+    "**/.jj": true,
+    "**/.venv": true,
+    "**/.direnv": true,
+    "**/dist": true,
+    "**/result": true
+  }
+}
